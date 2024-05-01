@@ -57,7 +57,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
               fontSize: widget.fontSize ?? Dimensions.large,
               color: widget.textColor ?? AppColor.brown,
             ),
-            contentPadding: EdgeInsets.all(widget.contentPadding ?? 12.r),
+            contentPadding: EdgeInsets.all(widget.contentPadding ?? 12),
             labelText: widget.labelText,
             label: widget.label,
             hintText: widget.hintText,

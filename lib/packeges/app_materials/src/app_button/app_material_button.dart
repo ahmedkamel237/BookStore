@@ -25,7 +25,7 @@ class AppMaterialButton extends StatelessWidget {
       child: Text(
         buttonText,
         style: TextStyles.extraBold(
-          fontSize: Dimensions.large.sp,
+          fontSize: Dimensions.large,
           textColor: AppColor.primary7,
         ),
       ),
