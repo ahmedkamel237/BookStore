@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stor_app/common/padding_values/padding_dimentions.dart';
-import 'package:stor_app/common/themes/colors.dart';
+import 'package:stor_app/packeges/utils/material.dart';
+import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -40,12 +40,12 @@ class _HomePageState extends State<HomePage>
             child: ListView.separated(
               physics: const ClampingScrollPhysics(),
               padding: const EdgeInsetsDirectional.symmetric(
-                horizontal: PaddingDimentions.pagePadding,
+                horizontal: PaddingDimensions.pagePadding,
               ),
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => Container(
                 height: MediaQuery.sizeOf(context).height * 0.1 -
-                    PaddingDimentions.normal,
+                    PaddingDimensions.normal,
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
@@ -54,14 +54,14 @@ class _HomePageState extends State<HomePage>
                   ),
                 ),
                 width: MediaQuery.sizeOf(context).height * 0.1 -
-                    PaddingDimentions.normal,
+                    PaddingDimensions.normal,
                 child: Image.asset(
                   'assets/store_app_background.jpeg',
                   fit: BoxFit.cover,
                 ),
               ),
               separatorBuilder: (context, index) => const SizedBox(
-                width: PaddingDimentions.normal,
+                width: PaddingDimensions.normal,
               ),
               itemCount: 10,
             ),
