@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stor_app/common/themes/colors.dart';
 import 'package:stor_app/home/home_page.dart';
+import 'package:stor_app/packeges/utils/material.dart';
 
 class MainHostPage extends StatefulWidget {
   const MainHostPage({super.key});

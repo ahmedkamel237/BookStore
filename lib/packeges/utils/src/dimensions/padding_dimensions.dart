@@ -1,4 +1,4 @@
-class PaddingDimentions {
+class PaddingDimensions {
   static const double small = 4;
   static const double normal = 8;
   static const double large = 16;
@@ -10,7 +10,7 @@ class PaddingDimentions {
   static const double  pagePadding = 16;
 }
 
-class Dimentions {
+class Dimensions {
   static const double small = 6;
   static const double normal = 10;
   static const double medium = 12;

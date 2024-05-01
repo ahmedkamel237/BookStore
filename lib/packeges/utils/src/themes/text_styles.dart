@@ -1,18 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:stor_app/common/padding_values/padding_dimentions.dart';
-import 'package:stor_app/common/themes/colors.dart';
+part of '../../material.dart';
 
 class TextStyles {
   TextStyles._();
 
   static TextStyle regular({
-    Color? textColor,
+    Color? color,
     double? fontSize,
     double? height,
   }) {
     return TextStyle(
-      fontSize: fontSize ?? Dimentions.large,
-      color: textColor ?? AppColor.black,
+      fontSize: fontSize ?? Dimensions.large,
+      color: color ?? AppColor.black,
       fontWeight: FontWeight.w400,
       height: height ?? 1,
     );
@@ -24,7 +22,7 @@ class TextStyles {
     double? height,
   }) {
     return TextStyle(
-      fontSize: fontSize ?? Dimentions.large,
+      fontSize: fontSize ?? Dimensions.large,
       color: textColor ?? AppColor.black,
       fontWeight: FontWeight.w500,
       height: height ?? 1,
@@ -37,7 +35,7 @@ class TextStyles {
     double? height,
   }) {
     return TextStyle(
-      fontSize: fontSize ?? Dimentions.large,
+      fontSize: fontSize ?? Dimensions.large,
       color: textColor ?? AppColor.black,
       fontWeight: FontWeight.w600,
       height: height ?? 1,
@@ -46,7 +44,7 @@ class TextStyles {
 
   static TextStyle bold({Color? textColor, double? fontSize, double? height}) {
     return TextStyle(
-      fontSize: fontSize ?? Dimentions.large,
+      fontSize: fontSize ?? Dimensions.large,
       color: textColor ?? AppColor.black,
       fontWeight: FontWeight.w700,
       height: height ?? 1,
@@ -59,7 +57,7 @@ class TextStyles {
     double? height,
   }) {
     return TextStyle(
-      fontSize: fontSize ?? Dimentions.large,
+      fontSize: fontSize ?? Dimensions.large,
       color: textColor ?? AppColor.black,
       fontWeight: FontWeight.w800,
       height: height ?? 1,
