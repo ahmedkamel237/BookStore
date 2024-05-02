@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stor_app/auth/login/ui/login_page.dart';
+import 'package:stor_app/auth/ui/login/login_page.dart';
 import 'package:stor_app/host_page.dart';
 
 class BuilderScreen extends StatelessWidget {
