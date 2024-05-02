@@ -16,6 +16,7 @@ class AppTextFormField extends StatefulWidget {
     this.maxLines,
     this.obscureText = false,
     this.inputFormatters,
+    this.autovalidateMode,
   });
 
   final void Function(String)? onChanged;
@@ -31,6 +32,7 @@ class AppTextFormField extends StatefulWidget {
   final int? maxLines;
   final bool obscureText;
   final List<TextInputFormatter>? inputFormatters;
+  final AutovalidateMode? autovalidateMode;
 
   @override
   State<AppTextFormField> createState() => _AppTextFormFieldState();
@@ -51,6 +53,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
       onChanged: widget.onChanged,
       maxLines: widget.maxLines ?? 1,
       obscureText: obscureText,cursorColor: AppColor.brown,
+      autovalidateMode: widget.autovalidateMode,
       decoration: widget.decoration ??
           InputDecoration(
             labelStyle: TextStyles.regular(

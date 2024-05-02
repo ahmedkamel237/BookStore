@@ -54,7 +54,7 @@ class DefaultFirebaseOptions {
     appId: '1:408949309630:android:344e0be8e6907845ab1eef',
     messagingSenderId: '408949309630',
     projectId: 'bookstore-91031',
-    storageBucket: 'bookstore-91031.appspot.com',
+    storageBucket: 'gs://bookstore-91031.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
@@ -62,7 +62,7 @@ class DefaultFirebaseOptions {
     appId: '1:408949309630:ios:4f2c76348ce59606ab1eef',
     messagingSenderId: '408949309630',
     projectId: 'bookstore-91031',
-    storageBucket: 'bookstore-91031.appspot.com',
+    storageBucket: 'gs://bookstore-91031.appspot.com',
     iosBundleId: 'com.example.storApp',
   );
 }
