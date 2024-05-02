@@ -1,5 +1,5 @@
 import 'package:stor_app/auth/domain/models/login_input_model.dart';
-import 'package:stor_app/auth/domain/reposatory/authintacation_reposatory.dart';
+import 'package:stor_app/auth/domain/reposatory/authentication_reposatory.dart';
 
 class LoginUseCase {
   LoginUseCase(this._authRepository);

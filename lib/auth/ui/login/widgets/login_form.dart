@@ -30,11 +30,14 @@ class _LoginFormState extends State<LoginForm> {
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
-            print("Success to login");
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text("Login Successfully")),
+            );
+
           } else if (state is LoginError) {
-            print(state.error);
-          } else {
-            print("Loading");
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.error)),
+            );
           }
         },
         builder: (context, state) {
@@ -77,13 +80,20 @@ class _LoginFormState extends State<LoginForm> {
                 ),
               ),
               SizedBox(height: PaddingDimensions.large.h),
-              if (state is LoginSuccess) SizedBox(
-                width: double.infinity,
-                child: AppMaterialButton(
-                  onPressed: _isButtonEnabled ? _loginFun : null,
-                  buttonText: 'Login',
+              if (state is LoginLoading)
+                const Center(
+                  child: CircularProgressIndicator(
+                    color: AppColor.brown,
+                  ),
+                )
+              else
+                SizedBox(
+                  width: double.infinity,
+                  child: AppMaterialButton(
+                    onPressed: _isButtonEnabled ? _loginFun : null,
+                    buttonText: 'Login',
+                  ),
                 ),
-              ) else const CircularProgressIndicator(),
               SizedBox(height: PaddingDimensions.large.h),
               Center(
                 child: RichText(
