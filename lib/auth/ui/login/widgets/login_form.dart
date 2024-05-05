@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stor_app/auth/domain/models/login_input_model.dart';
 import 'package:stor_app/auth/ui/login/login_cubit.dart';
 import 'package:stor_app/auth/ui/login/login_state.dart';
+import 'package:stor_app/common/helpers/helpers/app_regx.dart';
 import 'package:stor_app/packeges/app_materials/material.dart';
 import 'package:stor_app/packeges/utils/material.dart';
 import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
@@ -51,8 +52,10 @@ class _LoginFormState extends State<LoginForm> {
                 labelText: 'Email',
                 controller: _emailController,
                 validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter a valid email';
+                  if (value == null ||
+                      value.isEmpty ||
+                      !AppRegex.isEmailValid(value)) {
+                    return "please enter a valid email";
                   }
                   return null;
                 },
@@ -65,7 +68,7 @@ class _LoginFormState extends State<LoginForm> {
                 obscureText: _obscureText,
                 controller: _passwordController,
                 validator: (value) {
-                  if (value!.isEmpty && value.length > 6) {
+                  if (value!.isEmpty) {
                     return 'Please enter your password';
                   }
                   return null;
