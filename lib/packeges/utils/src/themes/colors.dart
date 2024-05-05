@@ -1,7 +1,7 @@
 part of '../../material.dart';
 
-class AppColor {
-  AppColor._();
+class AppColors {
+  AppColors._();
   static const Color white = Color(0xFFFFFFFF);
   static const Color lightGrey = Color(0xFFE5E5E5);
   static const Color darkGrey = Color(0xFF9E9E9E);

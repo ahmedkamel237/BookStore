@@ -1,15 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stor_app/admin/ui/admin_add_page.dart';
+import 'package:stor_app/home/home_cubit.dart';
+import 'package:stor_app/home/home_state.dart';
 import 'package:stor_app/packeges/utils/material.dart';
 import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => HomeCubit()..getAllCategories(),
+      child: const _HomePageBody(),
+    );
+  }
 }
 
-class _HomePageState extends State<HomePage>
+class _HomePageBody extends StatefulWidget {
+  const _HomePageBody();
+
+  @override
+  State<_HomePageBody> createState() => _HomePageBodyState();
+}
+
+class _HomePageBodyState extends State<_HomePageBody>
     with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
@@ -19,54 +35,99 @@ class _HomePageState extends State<HomePage>
         title: const Text(
           'Book Store',
           style: TextStyle(
-            color: AppColor.brown,
+            color: AppColors.brown,
             fontWeight: FontWeight.bold,
           ),
         ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: MediaQuery.sizeOf(context).height * 0.3,
-            width: double.infinity,
-            child: Image.asset(
-              'assets/store_app_background.jpeg',
-              fit: BoxFit.cover,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute<AdminAddedPage>(
+                  builder: (context) => const AdminAddedPage(),
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.add_business_rounded,
+              color: AppColors.brown,
             ),
           ),
-          SizedBox(
-            height: MediaQuery.sizeOf(context).height * 0.12,
-            child: ListView.separated(
-              physics: const ClampingScrollPhysics(),
-              padding: const EdgeInsetsDirectional.symmetric(
-                horizontal: PaddingDimensions.pagePadding,
-              ),
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => Container(
-                height: MediaQuery.sizeOf(context).height * 0.1 -
-                    PaddingDimensions.normal,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: AppColor.brown,
-                  ),
-                ),
-                width: MediaQuery.sizeOf(context).height * 0.1 -
-                    PaddingDimensions.normal,
+          IconButton(
+            onPressed: () async {},
+            icon: const Icon(
+              Icons.logout,
+              color: AppColors.brown,
+            ),
+          ),
+        ],
+      ),
+      body: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          if(state is HomeSuccess){ {
+            return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height * 0.3,
+                width: double.infinity,
                 child: Image.asset(
                   'assets/store_app_background.jpeg',
                   fit: BoxFit.cover,
                 ),
               ),
-              separatorBuilder: (context, index) => const SizedBox(
-                width: PaddingDimensions.normal,
+              const SizedBox(height: PaddingDimensions.normal),
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height * 0.12,
+                child: ListView.separated(
+                  physics: const ClampingScrollPhysics(),
+                  padding: const EdgeInsetsDirectional.symmetric(
+                    horizontal: PaddingDimensions.pagePadding,
+                  ),
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) => Column(
+                    children: [
+                      Container(
+                        height: MediaQuery.sizeOf(context).height * 0.1 -
+                            PaddingDimensions.normal,
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: AppColors.brown,
+                          ),
+                        ),
+                        width: MediaQuery.sizeOf(context).height * 0.1 -
+                            PaddingDimensions.normal,
+                        child: Image.asset(
+                          'assets/store_app_background.jpeg',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Text(state.categoryNames[index]),
+                    ],
+                  ),
+                  separatorBuilder: (context, index) => const SizedBox(
+                    width: PaddingDimensions.normal,
+                  ),
+                  itemCount: state.categoryNames.length,
+                ),
               ),
-              itemCount: 10,
-            ),
-          ),
-        ],
+            ],
+          );
+          }
+        }else if (state is HomeLoading) {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: AppColors.brown,
+              ),
+            );
+          }else if(state is HomeError){
+            return const SizedBox();
+          }else {
+            return const SizedBox();
+          }
+        },
       ),
     );
   }

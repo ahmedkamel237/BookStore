@@ -52,29 +52,29 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
     return TextFormField(
       onChanged: widget.onChanged,
       maxLines: widget.maxLines ?? 1,
-      obscureText: obscureText,cursorColor: AppColor.brown,
+      obscureText: obscureText,cursorColor: AppColors.brown,
       autovalidateMode: widget.autovalidateMode,
       decoration: widget.decoration ??
           InputDecoration(
             labelStyle: TextStyles.regular(
               fontSize: widget.fontSize ?? Dimensions.large,
-              color: widget.textColor ?? AppColor.brown,
+              color: widget.textColor ?? AppColors.brown,
             ),
             contentPadding: EdgeInsets.all(widget.contentPadding ?? 12),
             labelText: widget.labelText,
             label: widget.label,
             hintText: widget.hintText,
             enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: AppColor.lightBrown),
+              borderSide: BorderSide(color: AppColors.lightBrown),
               borderRadius: BorderRadius.all(Radius.circular(8)),
             ),
             disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: AppColor.lightBrown),
+              borderSide: const BorderSide(color: AppColors.lightBrown),
             ),
-            focusColor: AppColor.darkBrown,
+            focusColor: AppColors.darkBrown,
             focusedBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: AppColor.brown, width: 1.5),
+              borderSide: BorderSide(color: AppColors.brown, width: 1.5),
             ),
             suffixIcon: !widget.obscureText
                 ? null
@@ -94,7 +94,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
       inputFormatters: widget.inputFormatters,
       style: TextStyles.regular(
         fontSize: widget.fontSize ?? Dimensions.large,
-        color: widget.textColor ?? AppColor.black,
+        color: widget.textColor ?? AppColors.black,
       ),
       validator: widget.validator,
       controller: widget.controller,

@@ -14,16 +14,16 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       child: MaterialApp(
         theme: ThemeData(
-          scaffoldBackgroundColor: AppColor.primary8,
+          scaffoldBackgroundColor: AppColors.primary8,
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            backgroundColor: AppColor.primary7,
+            backgroundColor: AppColors.primary7,
           ),
           appBarTheme: const AppBarTheme(
-            backgroundColor: AppColor.primary8,
+            backgroundColor: AppColors.primary8,
             elevation: 0,
           ),
         ),
-        home: const BuilderScreen(),
+        home: BuilderScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );
