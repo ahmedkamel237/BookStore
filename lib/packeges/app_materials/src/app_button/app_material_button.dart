@@ -13,9 +13,9 @@ class AppMaterialButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      color: AppColor.brown,
+      color: AppColors.brown,
       autofocus: true,
-      disabledColor:AppColor.lightBrown,
+      disabledColor:AppColors.lightBrown,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(8),
@@ -26,7 +26,7 @@ class AppMaterialButton extends StatelessWidget {
         buttonText,
         style: TextStyles.extraBold(
           fontSize: Dimensions.large,
-          textColor: AppColor.primary7,
+          textColor: AppColors.primary7,
         ),
       ),
     );

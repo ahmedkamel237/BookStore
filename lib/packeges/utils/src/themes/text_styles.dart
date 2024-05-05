@@ -10,7 +10,7 @@ class TextStyles {
   }) {
     return TextStyle(
       fontSize: fontSize ?? Dimensions.large,
-      color: color ?? AppColor.black,
+      color: color ?? AppColors.black,
       fontWeight: FontWeight.w400,
       height: height ?? 1,
     );
@@ -23,7 +23,7 @@ class TextStyles {
   }) {
     return TextStyle(
       fontSize: fontSize ?? Dimensions.large,
-      color: textColor ?? AppColor.black,
+      color: textColor ?? AppColors.black,
       fontWeight: FontWeight.w500,
       height: height ?? 1,
     );
@@ -36,7 +36,7 @@ class TextStyles {
   }) {
     return TextStyle(
       fontSize: fontSize ?? Dimensions.large,
-      color: textColor ?? AppColor.black,
+      color: textColor ?? AppColors.black,
       fontWeight: FontWeight.w600,
       height: height ?? 1,
     );
@@ -45,7 +45,7 @@ class TextStyles {
   static TextStyle bold({Color? textColor, double? fontSize, double? height}) {
     return TextStyle(
       fontSize: fontSize ?? Dimensions.large,
-      color: textColor ?? AppColor.black,
+      color: textColor ?? AppColors.black,
       fontWeight: FontWeight.w700,
       height: height ?? 1,
     );
@@ -58,7 +58,7 @@ class TextStyles {
   }) {
     return TextStyle(
       fontSize: fontSize ?? Dimensions.large,
-      color: textColor ?? AppColor.black,
+      color: textColor ?? AppColors.black,
       fontWeight: FontWeight.w800,
       height: height ?? 1,
     );

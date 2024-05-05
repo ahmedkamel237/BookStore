@@ -34,7 +34,7 @@ class _MainHostPageState extends State<MainHostPage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
-        selectedItemColor: AppColor.brown,
+        selectedItemColor: AppColors.brown,
         onTap: (index) {
           controller.jumpToPage(index);
 

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stor_app/auth/domain/models/login_input_model.dart';
 import 'package:stor_app/auth/ui/login/login_cubit.dart';
 import 'package:stor_app/auth/ui/login/login_state.dart';
+import 'package:stor_app/builder_screen.dart';
 import 'package:stor_app/common/helpers/helpers/app_regx.dart';
 import 'package:stor_app/packeges/app_materials/material.dart';
 import 'package:stor_app/packeges/utils/material.dart';
@@ -34,7 +35,7 @@ class _LoginFormState extends State<LoginForm> {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text("Login Successfully")),
             );
-
+            Navigator.of(context).pushReplacementNamed(BuilderScreen.routeName);
           } else if (state is LoginError) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.error)),
@@ -79,14 +80,14 @@ class _LoginFormState extends State<LoginForm> {
                 'Forget password?',
                 style: TextStyles.bold(
                   fontSize: Dimensions.medium.sp,
-                  textColor: AppColor.brown,
+                  textColor: AppColors.brown,
                 ),
               ),
               SizedBox(height: PaddingDimensions.large.h),
               if (state is LoginLoading)
                 const Center(
                   child: CircularProgressIndicator(
-                    color: AppColor.brown,
+                    color: AppColors.brown,
                   ),
                 )
               else
@@ -107,7 +108,7 @@ class _LoginFormState extends State<LoginForm> {
                         text: "Don't have an account? ",
                         style: TextStyles.bold(
                           fontSize: Dimensions.medium.sp,
-                          textColor: AppColor.brown,
+                          textColor: AppColors.brown,
                         ),
                       ),
                       WidgetSpan(
@@ -118,7 +119,7 @@ class _LoginFormState extends State<LoginForm> {
                               text: 'Sign up',
                               style: TextStyles.extraBold(
                                 fontSize: Dimensions.medium.sp,
-                                textColor: AppColor.brown,
+                                textColor: AppColors.brown,
                               ),
                             ),
                           ),
