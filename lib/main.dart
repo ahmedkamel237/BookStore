@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stor_app/app.dart';
 import 'package:stor_app/common/base/app_injector.dart';
+import 'package:stor_app/common/helpers/shared_preferances_helper/shared_preferances_helper.dart';
 import 'package:stor_app/firebase_options.dart';
 
 void main() async {
@@ -10,5 +11,6 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await setUpGetIt();
+  await CacheHelper.init();
   runApp(const MyApp());
 }

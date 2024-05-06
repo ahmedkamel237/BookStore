@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stor_app/home/home_page.dart';
+import 'package:stor_app/home/ui/home_page.dart';
 import 'package:stor_app/packeges/utils/material.dart';
 
 class MainHostPage extends StatefulWidget {
@@ -55,9 +55,8 @@ class _MainHostPageState extends State<MainHostPage> {
   }
 }
 
-
 class _Tabbar2 extends StatefulWidget {
-  const _Tabbar2({super.key});
+  const _Tabbar2();
 
   @override
   State<_Tabbar2> createState() => _Tabbar2State();
