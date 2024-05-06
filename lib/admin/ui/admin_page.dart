@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stor_app/admin/ui/admin_cubit.dart';
 import 'package:stor_app/admin/ui/admin_state.dart';
+import 'package:stor_app/home/domain/models/categories_model.dart';
 import 'package:stor_app/packeges/app_materials/material.dart';
 import 'package:stor_app/packeges/utils/material.dart';
 import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
@@ -13,7 +14,7 @@ class AdminAddedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AdminCubit(),
+      create: (context) => AdminCubit()..getAllCategories(),
       child: const _AdminAddedBody(),
     );
   }
@@ -87,6 +88,28 @@ class _AdminAddedBodyState extends State<_AdminAddedBody> {
                             onPressed: _isEnabled ? _addCollection : null,
                           ),
                   ),
+                  SizedBox(height: PaddingDimensions.large.h),
+                  Text(
+                    "All Collections",
+                    style: TextStyles.bold(
+                      fontSize: Dimensions.large.sp,
+                    ),
+                  ),
+                  SizedBox(height: PaddingDimensions.large.h),
+                  Expanded(
+                    child: ListView.separated(
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) => Text(
+                        state.categoryModelList?[index].name ?? '',
+                        style: TextStyles.regular(
+                          fontSize: Dimensions.large.sp,
+                        ),
+                      ),
+                      separatorBuilder: (context, index) =>
+                          SizedBox(height: 15.w),
+                      itemCount: state.categoryModelList?.length ?? 0,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -112,7 +135,11 @@ class _AdminAddedBodyState extends State<_AdminAddedBody> {
     final isValidate = _formKey.currentState?.validate() ?? false;
     if (isValidate) {
       BlocProvider.of<AdminCubit>(context).addCategories(
-        _collectionController.text,
+        CategoriesModel(
+          name: _collectionController.text,
+          image: 'assets/store_app_background.jpeg',
+          id: '',
+        ),
       );
     }
   }
