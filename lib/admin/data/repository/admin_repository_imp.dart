@@ -15,9 +15,29 @@ class AdminRepositoryImpl implements AdminRepository {
         .add({
           'name': model.name,
         })
-        .then((value) => _categories.doc(value.id).update({'id': value.id,}))
+        .then((value) => _categories.doc(value.id).update({
+              'id': value.id,
+            }))
         .catchError(
           (error) => print('Failed to add collection: $error'),
         );
   }
+
+  @override
+  Future<void> removeCollection(String id) async {
+    await _categories.doc(id).delete();
+  }
+
+  // @override
+  // Future<CategoriesModel> updateCollection(CategoriesModel model) async {
+  //   final data = await _categories.doc(model.id).update(
+  //     {
+  //       'id': model.id,
+  //       'image': model.image,
+  //       'name': model.name,
+  //     },
+  //   );
+  //
+  //   return data;
+  // }
 }

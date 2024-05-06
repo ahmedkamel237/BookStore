@@ -31,3 +31,15 @@ class CategoriesError extends AdminState {
 
   final String errorMessage;
 }
+
+class RemoveCollectionInitial extends AdminState {}
+
+class RemoveCollectionLoading extends AdminState {}
+
+class RemoveCollectionSuccess extends AdminState {}
+
+class RemoveCollectionError extends AdminState {
+  RemoveCollectionError({required this.errorMessage});
+
+  final String errorMessage;
+}
