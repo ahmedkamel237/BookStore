@@ -119,7 +119,7 @@ class _LoginFormState extends State<LoginForm> {
                               text: 'Sign up',
                               style: TextStyles.extraBold(
                                 fontSize: Dimensions.medium.sp,
-                                textColor: AppColors.brown,
+                                color: AppColors.brown,
                               ),
                             ),
                           ),

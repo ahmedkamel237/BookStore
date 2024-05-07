@@ -3,7 +3,7 @@ import 'package:stor_app/admin/domain/usecases/add_categories_use_case.dart';
 import 'package:stor_app/admin/domain/usecases/remove_collection.dart';
 import 'package:stor_app/admin/ui/admin_state.dart';
 import 'package:stor_app/common/base/app_injector.dart';
-import 'package:stor_app/home/domain/models/categories_model.dart';
+import 'package:stor_app/home/domain/models/categoriey_model_input.dart';
 import 'package:stor_app/home/domain/use_cases/get_all_categores_use_case.dart';
 
 class AdminCubit extends Cubit<AdminState> {
@@ -21,10 +21,10 @@ class AdminCubit extends Cubit<AdminState> {
     _removeCollectionUseCase = injector();
   }
 
-  Future<void> addCategories(CategoriesModel model) async {
+  Future<void> addCategories(CategoriesModelInput input) async {
     emit(AdminAddCategoryLoading());
     try {
-      await _addCategoriesUseCase.execute(model);
+      await _addCategoriesUseCase.execute(input);
       emit(AdminAddCategorySuccess());
     } catch (e) {
       emit(AdminAddCategoryError(errorMessage: e.toString()));

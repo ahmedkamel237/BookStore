@@ -52,13 +52,13 @@ class TextStyles {
   }
 
   static TextStyle extraBold({
-    Color? textColor,
+    Color? color,
     double? fontSize,
     double? height,
   }) {
     return TextStyle(
       fontSize: fontSize ?? Dimensions.large,
-      color: textColor ?? AppColors.black,
+      color: color ?? AppColors.black,
       fontWeight: FontWeight.w800,
       height: height ?? 1,
     );

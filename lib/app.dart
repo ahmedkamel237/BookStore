@@ -12,19 +12,27 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: MaterialApp(
-        theme: ThemeData(
-          scaffoldBackgroundColor: AppColors.primary8,
-          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            backgroundColor: AppColors.primary7,
+      child: GestureDetector(
+        onTap: () {
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: MaterialApp(
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSwatch().copyWith(
+              surfaceTint: AppColors.primary8,//to change when Scroll color
+            ),
+            scaffoldBackgroundColor: AppColors.primary8,
+            bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+              backgroundColor: AppColors.primary7,
+            ),
+            appBarTheme: const AppBarTheme(
+              backgroundColor: AppColors.primary8,
+              elevation: 0,
+            ),
           ),
-          appBarTheme: const AppBarTheme(
-            backgroundColor: AppColors.primary8,
-            elevation: 0,
-          ),
+          home: const BuilderScreen(),
+          debugShowCheckedModeBanner: false,
         ),
-        home: BuilderScreen(),
-        debugShowCheckedModeBanner: false,
       ),
     );
   }
