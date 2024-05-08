@@ -42,23 +42,23 @@ class TextStyles {
     );
   }
 
-  static TextStyle bold({Color? textColor, double? fontSize, double? height}) {
+  static TextStyle bold({Color? color, double? fontSize, double? height}) {
     return TextStyle(
       fontSize: fontSize ?? Dimensions.large,
-      color: textColor ?? AppColors.black,
+      color: color ?? AppColors.black,
       fontWeight: FontWeight.w700,
       height: height ?? 1,
     );
   }
 
   static TextStyle extraBold({
-    Color? textColor,
+    Color? color,
     double? fontSize,
     double? height,
   }) {
     return TextStyle(
       fontSize: fontSize ?? Dimensions.large,
-      color: textColor ?? AppColors.black,
+      color: color ?? AppColors.black,
       fontWeight: FontWeight.w800,
       height: height ?? 1,
     );

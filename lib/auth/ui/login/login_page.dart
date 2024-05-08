@@ -39,7 +39,7 @@ class _LoginBody extends StatelessWidget {
               Text(
                 'Welcome Back to the\nBook Store!',
                 style: TextStyles.extraBold(
-                  textColor: AppColors.brown,
+                  color: AppColors.brown,
                   height: 1.3,
                   fontSize: Dimensions.xLarge.sp,
                 ),
@@ -48,7 +48,7 @@ class _LoginBody extends StatelessWidget {
               Text(
                 'Login to your account',
                 style: TextStyles.extraBold(
-                  textColor: AppColors.darkBrown,
+                  color: AppColors.darkBrown,
                   fontSize: Dimensions.medium.sp,
                 ),
               ),

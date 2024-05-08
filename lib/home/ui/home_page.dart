@@ -1,9 +1,13 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stor_app/admin/ui/admin_page.dart';
 import 'package:stor_app/home/ui/home_cubit.dart';
 import 'package:stor_app/home/ui/home_state.dart';
 import 'package:stor_app/home/ui/widgets/categories_item_widget.dart';
+import 'package:stor_app/home/ui/widgets/product_item.dart';
 import 'package:stor_app/packeges/utils/material.dart';
 import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 
@@ -33,11 +37,11 @@ class _HomePageBodyState extends State<_HomePageBody>
     super.build(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Book Store',
-          style: TextStyle(
+          style: TextStyles.extraBold(
+            fontSize: Dimensions.xLarge.sp,
             color: AppColors.brown,
-            fontWeight: FontWeight.bold,
           ),
         ),
         actions: [
@@ -55,12 +59,7 @@ class _HomePageBodyState extends State<_HomePageBody>
             ),
           ),
           IconButton(
-            onPressed: () async {
-              // showDialog(
-              //   context: context,
-              //   builder: (context) => Column(),
-              // );
-            },
+            onPressed: () async {},
             icon: const Icon(
               Icons.logout,
               color: AppColors.brown,
@@ -74,17 +73,17 @@ class _HomePageBodyState extends State<_HomePageBody>
             {
               return RefreshIndicator(
                 color: AppColors.brown,
+                backgroundColor: AppColors.white,
                 onRefresh: () async {
                   context.read<HomeCubit>().getAllCategories();
                 },
-                child: SingleChildScrollView(
+                child: CustomScrollView(
                   physics: const AlwaysScrollableScrollPhysics(
                     parent: ClampingScrollPhysics(),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: SizedBox(
                         height: MediaQuery.sizeOf(context).height * 0.3,
                         width: double.infinity,
                         child: Image.asset(
@@ -92,24 +91,55 @@ class _HomePageBodyState extends State<_HomePageBody>
                           fit: BoxFit.cover,
                         ),
                       ),
-                      const SizedBox(height: PaddingDimensions.normal),
-                      SizedBox(
-                        height: MediaQuery.sizeOf(context).height * 0.12,
-                        child: ListView.separated(
-                          physics: const ClampingScrollPhysics(),
-                          padding: const EdgeInsetsDirectional.symmetric(
-                            horizontal: PaddingDimensions.pagePadding,
+                    ),
+                    SliverPersistentHeader(
+                      pinned: true,
+                      floating: true,
+                      delegate: _SliverAppBarDelegate(
+                        minHeight: MediaQuery.sizeOf(context).height * 0.17.h,
+                        maxHeight: MediaQuery.sizeOf(context).height * 0.17.h,
+                        child: Container(
+                          color: AppColors.primary8,
+                          height: MediaQuery.sizeOf(context).height * 0.17.h,
+                          child: ListView.separated(
+                            physics: const ClampingScrollPhysics(),
+                            padding: const EdgeInsetsDirectional.symmetric(
+                              horizontal: PaddingDimensions.pagePadding,
+                              vertical: PaddingDimensions.pagePadding,
+                            ),
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) => CategoriesItem(
+                                model: state.categoryModelList[index]),
+                            separatorBuilder: (context, index) =>
+                                const SizedBox(
+                              width: PaddingDimensions.normal,
+                            ),
+                            itemCount: state.categoryModelList.length,
                           ),
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) => CategoriesItem(model: state.categoryModelList[index]),
-                          separatorBuilder: (context, index) => const SizedBox(
-                            width: PaddingDimensions.normal,
-                          ),
-                          itemCount: state.categoryModelList.length,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    SliverPadding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: PaddingDimensions.pagePadding),
+                      sliver: SliverGrid.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisSpacing: PaddingDimensions.normal,
+                          mainAxisSpacing: PaddingDimensions.normal,
+                          crossAxisCount: 2,
+                        ),
+                        itemBuilder: (context, index) => ProductItemWidget(
+                          image: images[index],
+                        ),
+                        itemCount: images.length,
+                      ),
+                    ),
+                    const SliverToBoxAdapter(
+                        child: SizedBox(
+                      height: PaddingDimensions.normal,
+                    )),
+                  ],
                 ),
               );
             }
@@ -132,3 +162,49 @@ class _HomePageBodyState extends State<_HomePageBody>
   @override
   bool get wantKeepAlive => true;
 }
+
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  _SliverAppBarDelegate({
+    required this.minHeight,
+    required this.maxHeight,
+    required this.child,
+  });
+
+  final double minHeight;
+  final double maxHeight;
+  final Widget child;
+
+  @override
+  double get minExtent => minHeight;
+
+  @override
+  double get maxExtent => max(maxHeight, minHeight);
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return SizedBox.expand(child: child);
+  }
+
+  @override
+  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
+    return maxHeight != oldDelegate.maxHeight ||
+        minHeight != oldDelegate.minHeight ||
+        child != oldDelegate.child;
+  }
+}
+
+List<String> images = [
+  'https://t3.ftcdn.net/jpg/03/60/63/20/360_F_360632003_6Xqn9tQPcf3YaZ7oyThBiDoCLpodp69m.jpg',
+  'https://cdn01.allaboutart.co.uk/media/zbojfgys/fcpcs24_sg1.jpg',
+  'https://m.media-amazon.com/images/I/71JyKz+8l6L._AC_UF894,1000_QL80_.jpg',
+  'https://www.opisina.com.ph/sites/default/files/206004.jpg',
+  'https://cdn.salla.sa/epzxB/ophAKYilc7obhT74vSMu8hw4WWVPWEqsCyJaVFkT.jpg',
+  'https://m.media-amazon.com/images/I/61sGu1sGgNL._AC_UF1000,1000_QL80_.jpg',
+  'https://t3.ftcdn.net/jpg/03/60/63/20/360_F_360632003_6Xqn9tQPcf3YaZ7oyThBiDoCLpodp69m.jpg',
+  'https://cdn01.allaboutart.co.uk/media/zbojfgys/fcpcs24_sg1.jpg',
+  'https://m.media-amazon.com/images/I/71JyKz+8l6L._AC_UF894,1000_QL80_.jpg',
+  'https://www.opisina.com.ph/sites/default/files/206004.jpg',
+  'https://cdn.salla.sa/epzxB/ophAKYilc7obhT74vSMu8hw4WWVPWEqsCyJaVFkT.jpg',
+  'https://m.media-amazon.com/images/I/61sGu1sGgNL._AC_UF1000,1000_QL80_.jpg',
+];

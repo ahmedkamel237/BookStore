@@ -4,18 +4,20 @@ class AppMaterialButton extends StatelessWidget {
   const AppMaterialButton({
     required this.buttonText,
     this.onPressed,
+    this.buttonColor,
     super.key,
   });
 
   final VoidCallback? onPressed;
   final String buttonText;
+  final Color? buttonColor;
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      color: AppColors.brown,
+      color: buttonColor ?? AppColors.brown,
       autofocus: true,
-      disabledColor:AppColors.lightBrown,
+      disabledColor: AppColors.lightBrown,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(8),
@@ -26,7 +28,7 @@ class AppMaterialButton extends StatelessWidget {
         buttonText,
         style: TextStyles.extraBold(
           fontSize: Dimensions.large,
-          textColor: AppColors.primary7,
+          color: AppColors.primary7,
         ),
       ),
     );

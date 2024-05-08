@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stor_app/home/domain/models/categories_model.dart';
 import 'package:stor_app/packeges/utils/material.dart';
 import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 
 class CategoriesItem extends StatelessWidget {
   final CategoriesModel model;
+
   const CategoriesItem({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-
-      },
+    return SizedBox(
+      width: MediaQuery.sizeOf(context).height * 0.1 - PaddingDimensions.normal,
       child: Column(
         children: [
           Container(
-            height:
-            MediaQuery.sizeOf(context).height * 0.1 -
+            height: MediaQuery.sizeOf(context).height * 0.1 -
                 PaddingDimensions.normal,
             clipBehavior: Clip.antiAliasWithSaveLayer,
             decoration: BoxDecoration(
@@ -33,7 +32,16 @@ class CategoriesItem extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          Text(model.name),
+          const SizedBox(height: PaddingDimensions.normal),
+          Text(
+            model.name,
+            textAlign: TextAlign.center,
+            style: TextStyles.regular(
+              fontSize: Dimensions.medium.sp,
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
         ],
       ),
     );

@@ -26,7 +26,6 @@ class AuthRepositoryImp implements AuthRepository {
     final user = _firebaseAuth.currentUser?.email;
     if (user != null) {
       await _prefs.then((value) => value.setString('user', user));
-      print(user);
     }
   }
 }
