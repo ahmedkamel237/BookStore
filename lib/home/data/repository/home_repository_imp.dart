@@ -11,7 +11,10 @@ class HomeRepositoryImp implements HomeRepository {
 
   @override
   Future<List<CategoriesModel>> getAllCategories() async {
-    final result = await _categories.get();
+    final result = await _categories
+        .get()
+        .then((value) => value)
+        .catchError((e) => throw Exception(e));
     return result.docs
         .map((e) => ApiCategoryModel.fromJson(e.data()).toCategoriesModel())
         .toList();

@@ -7,6 +7,7 @@ import 'package:stor_app/admin/ui/admin_page.dart';
 import 'package:stor_app/home/ui/home_cubit.dart';
 import 'package:stor_app/home/ui/home_state.dart';
 import 'package:stor_app/home/ui/widgets/categories_item_widget.dart';
+import 'package:stor_app/home/ui/widgets/product_item.dart';
 import 'package:stor_app/packeges/utils/material.dart';
 import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 
@@ -36,7 +37,7 @@ class _HomePageBodyState extends State<_HomePageBody>
     super.build(context);
     return Scaffold(
       appBar: AppBar(
-        title:  Text(
+        title: Text(
           'Book Store',
           style: TextStyles.extraBold(
             fontSize: Dimensions.xLarge.sp,
@@ -119,29 +120,25 @@ class _HomePageBodyState extends State<_HomePageBody>
                       ),
                     ),
                     SliverPadding(
-                      padding: const EdgeInsets.symmetric(horizontal: PaddingDimensions.pagePadding),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: PaddingDimensions.pagePadding),
                       sliver: SliverGrid.builder(
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisSpacing: PaddingDimensions.normal,
+                          crossAxisSpacing: PaddingDimensions.normal,
                           mainAxisSpacing: PaddingDimensions.normal,
                           crossAxisCount: 2,
                         ),
-                        itemBuilder: (context, index) => Container(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.r),
-                          ),
-                          child: Image.asset(
-                            'assets/store_app_background.jpeg',
-                            fit: BoxFit.cover,
-                          ),
+                        itemBuilder: (context, index) => ProductItemWidget(
+                          image: images[index],
                         ),
-                        itemCount: 10,
+                        itemCount: images.length,
                       ),
                     ),
                     const SliverToBoxAdapter(
-                        child: SizedBox(height: PaddingDimensions.normal,)),
+                        child: SizedBox(
+                      height: PaddingDimensions.normal,
+                    )),
                   ],
                 ),
               );
@@ -196,3 +193,18 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
         child != oldDelegate.child;
   }
 }
+
+List<String> images = [
+  'https://t3.ftcdn.net/jpg/03/60/63/20/360_F_360632003_6Xqn9tQPcf3YaZ7oyThBiDoCLpodp69m.jpg',
+  'https://cdn01.allaboutart.co.uk/media/zbojfgys/fcpcs24_sg1.jpg',
+  'https://m.media-amazon.com/images/I/71JyKz+8l6L._AC_UF894,1000_QL80_.jpg',
+  'https://www.opisina.com.ph/sites/default/files/206004.jpg',
+  'https://cdn.salla.sa/epzxB/ophAKYilc7obhT74vSMu8hw4WWVPWEqsCyJaVFkT.jpg',
+  'https://m.media-amazon.com/images/I/61sGu1sGgNL._AC_UF1000,1000_QL80_.jpg',
+  'https://t3.ftcdn.net/jpg/03/60/63/20/360_F_360632003_6Xqn9tQPcf3YaZ7oyThBiDoCLpodp69m.jpg',
+  'https://cdn01.allaboutart.co.uk/media/zbojfgys/fcpcs24_sg1.jpg',
+  'https://m.media-amazon.com/images/I/71JyKz+8l6L._AC_UF894,1000_QL80_.jpg',
+  'https://www.opisina.com.ph/sites/default/files/206004.jpg',
+  'https://cdn.salla.sa/epzxB/ophAKYilc7obhT74vSMu8hw4WWVPWEqsCyJaVFkT.jpg',
+  'https://m.media-amazon.com/images/I/61sGu1sGgNL._AC_UF1000,1000_QL80_.jpg',
+];

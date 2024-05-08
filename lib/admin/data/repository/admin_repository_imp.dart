@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:stor_app/admin/domain/repository/admin_repository.dart';
 import 'package:stor_app/common/constants/app_constants.dart';
-import 'package:stor_app/home/domain/models/categories_model.dart';
 import 'package:stor_app/home/domain/models/categoriey_model_input.dart';
 
 class AdminRepositoryImpl implements AdminRepository {

@@ -148,95 +148,99 @@ class _AdminAddedBodyState extends State<_AdminAddedBody> {
                             onPressed: _isEnabled ? _addCollection : null,
                           ),
                   ),
-                  SizedBox(height: PaddingDimensions.large.h),
-                  Text(
-                    "All Collections",
-                    style: TextStyles.bold(
-                      fontSize: Dimensions.large.sp,
+                  if (state.categoryModelList?.isNotEmpty == true) ...[
+                    Text(
+                      "All Collections",
+                      style: TextStyles.bold(
+                        fontSize: Dimensions.large.sp,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: PaddingDimensions.large.h),
-                  state is CategoriesLoading
-                      ? const Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.brown,
-                          ),
-                        )
-                      : Expanded(
-                          child: ListView.separated(
-                            padding: EdgeInsets.zero,
-                            physics: const ClampingScrollPhysics(),
-                            itemBuilder: (context, index) => Row(
-                              children: [
-                                Text(
-                                  state.categoryModelList?[index].name ?? '',
-                                  style: TextStyles.regular(
-                                    fontSize: Dimensions.large.sp,
-                                  ),
-                                ),
-                                const Spacer(),
-                                const InkWell(
-                                  child: Icon(
-                                    size: 18,
-                                    Icons.edit,
-                                    color: AppColors.brown,
-                                  ),
-                                ),
-                                SizedBox(width: PaddingDimensions.normal.w),
-                                InkWell(
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (_) => AlertDialog(
-                                        backgroundColor: AppColors.primary4,
-                                        title: Text(
-                                          "Are you sure you want to delete this collection?",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyles.regular(
-                                            height: 1.4,
-                                            color: AppColors.primary8,
-                                            fontSize: Dimensions.xLarge.sp,
-                                          ),
-                                        ),
-                                        actionsAlignment:
-                                            MainAxisAlignment.center,
-                                        actions: [
-                                          AppMaterialButton(
-                                            buttonText: "Yes",
-                                            onPressed: () {
-                                              BlocProvider.of<AdminCubit>(
-                                                      context)
-                                                  .deleteCollection(
-                                                state.categoryModelList?[index]
-                                                        .id ??
-                                                    '',
-                                              );
-                                              Navigator.of(context).pop();
-                                              Navigator.of(context).pop();
-                                            },
-                                          ),
-                                          AppMaterialButton(
-                                            buttonText: "No",
-                                            onPressed: () {
-                                              Navigator.of(context).pop();
-                                            },
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                  child: const Icon(
-                                    Icons.delete,
-                                    color: AppColors.brown,
-                                  ),
-                                ),
-                              ],
+                    SizedBox(height: PaddingDimensions.large.h),
+                    state is CategoriesLoading
+                        ? const Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.brown,
                             ),
-                            separatorBuilder: (context, index) =>
-                                SizedBox(height: 15.w),
-                            itemCount: state.categoryModelList?.length ?? 0,
+                          )
+                        : Expanded(
+                            child: ListView.separated(
+                              padding: EdgeInsets.zero,
+                              physics: const ClampingScrollPhysics(),
+                              itemBuilder: (context, index) => Row(
+                                children: [
+                                  Text(
+                                    state.categoryModelList?[index].name ?? '',
+                                    style: TextStyles.regular(
+                                      fontSize: Dimensions.large.sp,
+                                    ),
+                                  ),
+                                  const Spacer(),
+                                  const InkWell(
+                                    child: Icon(
+                                      size: 18,
+                                      Icons.edit,
+                                      color: AppColors.brown,
+                                    ),
+                                  ),
+                                  SizedBox(width: PaddingDimensions.normal.w),
+                                  InkWell(
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => AlertDialog(
+                                          backgroundColor: AppColors.primary4,
+                                          title: Text(
+                                            "Are you sure you want to delete this collection?",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyles.regular(
+                                              height: 1.4,
+                                              color: AppColors.primary8,
+                                              fontSize: Dimensions.xLarge.sp,
+                                            ),
+                                          ),
+                                          actionsAlignment:
+                                              MainAxisAlignment.center,
+                                          actions: [
+                                            AppMaterialButton(
+                                              buttonText: "Yes",
+                                              onPressed: () {
+                                                BlocProvider.of<AdminCubit>(
+                                                        context)
+                                                    .deleteCollection(
+                                                  state
+                                                          .categoryModelList?[
+                                                              index]
+                                                          .id ??
+                                                      '',
+                                                );
+                                                Navigator.of(context).pop();
+                                                Navigator.of(context).pop();
+                                              },
+                                            ),
+                                            AppMaterialButton(
+                                              buttonText: "No",
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                    child: const Icon(
+                                      Icons.delete,
+                                      color: AppColors.brown,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              separatorBuilder: (context, index) =>
+                                  SizedBox(height: 15.w),
+                              itemCount: state.categoryModelList?.length ?? 0,
+                            ),
                           ),
-                        ),
+                    SizedBox(height: PaddingDimensions.large.h),
+                  ],
                   SizedBox(height: PaddingDimensions.large.h),
                 ],
               ),

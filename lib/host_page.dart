@@ -10,12 +10,25 @@ class MainHostPage extends StatefulWidget {
 }
 
 class _MainHostPageState extends State<MainHostPage> {
-  final PageController controller = PageController();
+  final PageController controller = PageController(initialPage: 1);
   int currentIndex = 0;
   final tabPages = [
-    const HomePage(),
     const _Tabbar2(),
+    const HomePage(),
+    const _SettingPage(),
   ];
+
+
+  @override
+  void initState() {
+    currentIndex = 1;
+    super.initState();
+  }
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +39,6 @@ class _MainHostPageState extends State<MainHostPage> {
         onPageChanged: (index) {
           setState(() {
             currentIndex = index;
-
             /// Switching bottom tabs
           });
         },
@@ -37,17 +49,20 @@ class _MainHostPageState extends State<MainHostPage> {
         selectedItemColor: AppColors.brown,
         onTap: (index) {
           controller.jumpToPage(index);
-
           /// Switching the PageView tabs
           setState(() {
             currentIndex = index;
           });
         },
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: 'Cart',
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
           ),
         ],
       ),
@@ -68,9 +83,33 @@ class _Tabbar2State extends State<_Tabbar2>
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('Tab bar 2')),
+      appBar: AppBar(title: const Text('Cart')),
       body: const Center(
-        child: Text('A'),
+        child: Text('Cart Page'),
+      ),
+    );
+  }
+
+  @override
+  bool get wantKeepAlive => true;
+}
+
+class _SettingPage extends StatefulWidget {
+  const _SettingPage();
+
+  @override
+  State<_SettingPage> createState() => _SettingPageState();
+}
+
+class _SettingPageState extends State<_SettingPage>
+    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return Scaffold(
+      appBar: AppBar(title: const Text('Setting')),
+      body: const Center(
+        child: Text('Setting Page'),
       ),
     );
   }

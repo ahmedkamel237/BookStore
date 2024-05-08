@@ -80,7 +80,7 @@ class _LoginFormState extends State<LoginForm> {
                 'Forget password?',
                 style: TextStyles.bold(
                   fontSize: Dimensions.medium.sp,
-                  textColor: AppColors.brown,
+                  color: AppColors.brown,
                 ),
               ),
               SizedBox(height: PaddingDimensions.large.h),
@@ -108,7 +108,7 @@ class _LoginFormState extends State<LoginForm> {
                         text: "Don't have an account? ",
                         style: TextStyles.bold(
                           fontSize: Dimensions.medium.sp,
-                          textColor: AppColors.brown,
+                          color: AppColors.brown,
                         ),
                       ),
                       WidgetSpan(
