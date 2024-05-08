@@ -168,10 +168,14 @@ class _AdminAddedBodyState extends State<_AdminAddedBody> {
                               physics: const ClampingScrollPhysics(),
                               itemBuilder: (context, index) => Row(
                                 children: [
-                                  Text(
-                                    state.categoryModelList?[index].name ?? '',
-                                    style: TextStyles.regular(
-                                      fontSize: Dimensions.large.sp,
+                                  Expanded(
+                                    child: Text(
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      state.categoryModelList?[index].name ?? '',
+                                      style: TextStyles.regular(
+                                        fontSize: Dimensions.large.sp,
+                                      ),
                                     ),
                                   ),
                                   const Spacer(),
