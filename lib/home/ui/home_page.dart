@@ -8,6 +8,7 @@ import 'package:stor_app/home/ui/home_cubit.dart';
 import 'package:stor_app/home/ui/home_state.dart';
 import 'package:stor_app/home/ui/widgets/categories_item_widget.dart';
 import 'package:stor_app/home/ui/widgets/product_item.dart';
+import 'package:stor_app/packeges/app_materials/material.dart';
 import 'package:stor_app/packeges/utils/material.dart';
 import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 
@@ -129,8 +130,90 @@ class _HomePageBodyState extends State<_HomePageBody>
                           mainAxisSpacing: PaddingDimensions.normal,
                           crossAxisCount: 2,
                         ),
-                        itemBuilder: (context, index) => ProductItemWidget(
-                          image: images[index],
+                        itemBuilder: (context, index) => GestureDetector(
+                          onTap: () {
+                            showBottomSheet(
+                              context: context,
+                              builder: (context) => Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.7,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  color: AppColors.primary6,
+                                  borderRadius:
+                                      BorderRadiusDirectional.vertical(
+                                          top: Radius.circular(12.r)),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.3,
+                                        clipBehavior:
+                                            Clip.antiAliasWithSaveLayer,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(12.r),
+                                        ),
+                                        child: Image.network(
+                                          images[index],
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: PaddingDimensions.normal.h,
+                                      ),
+                                      Text(
+                                        "Note Book 100 Pages",
+                                        style: TextStyles.medium(
+                                          fontSize: Dimensions.large.sp,
+                                          color: AppColors.brown,
+                                          height: 1.3,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: PaddingDimensions.normal.h,
+                                      ),
+                                      Text(
+                                        "size: 8.5 x 11",
+                                        style: TextStyles.medium(
+                                          fontSize: Dimensions.large.sp,
+                                          color: AppColors.brown,
+                                        ),
+                                      ),
+                                      const Row(children: []),//todo :add Counter
+                                      SizedBox(
+                                        height: PaddingDimensions.normal.h,
+                                      ),
+                                      Text(
+                                        "Price: \$100",
+                                        style: TextStyles.extraBold(
+                                          fontSize: Dimensions.large.sp,
+                                          color: AppColors.brown,
+                                        ),
+                                      ),
+                                      const Spacer(),
+                                      AppMaterialButton(
+                                        buttonText: "Add to cart",
+                                        onPressed: () {},
+                                        isExpanded: true,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                          child: ProductItemWidget(
+                            image: images[index],
+                          ),
                         ),
                         itemCount: images.length,
                       ),

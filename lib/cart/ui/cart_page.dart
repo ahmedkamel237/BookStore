@@ -47,12 +47,14 @@ class _CartPageState extends State<CartPage>
                       'Product ${index + 1}',
                       style: TextStyles.bold(
                         fontSize: Dimensions.large.sp,
+                        color: AppColors.brown,
                       ),
                     ),
                     Text(
                       'Product ${index + 1}',
                       style: TextStyles.bold(
                         fontSize: Dimensions.large.sp,
+                        color: AppColors.brown,
                       ),
                     ),
                   ],

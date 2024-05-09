@@ -17,26 +17,26 @@ class TextStyles {
   }
 
   static TextStyle medium({
-    Color? textColor,
+    Color? color,
     double? fontSize,
     double? height,
   }) {
     return TextStyle(
       fontSize: fontSize ?? Dimensions.large,
-      color: textColor ?? AppColors.black,
+      color: color ?? AppColors.black,
       fontWeight: FontWeight.w500,
       height: height ?? 1,
     );
   }
 
   static TextStyle semiBold({
-    Color? textColor,
+    Color? color,
     double? fontSize,
     double? height,
   }) {
     return TextStyle(
       fontSize: fontSize ?? Dimensions.large,
-      color: textColor ?? AppColors.black,
+      color: color ?? AppColors.black,
       fontWeight: FontWeight.w600,
       height: height ?? 1,
     );
