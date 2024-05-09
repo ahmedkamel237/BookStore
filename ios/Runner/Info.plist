@@ -47,10 +47,10 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
-		 <!-- Other keys and configurations... -->
-            <key>NSCameraUsageDescription</key>
-            <string>Your app needs access to the camera to take photos and videos.</string>
-            <key>NSPhotoLibraryUsageDescription</key>
-            <string>Your app needs access to the photo library to select photos and videos.</string>
+		<!-- Other keys and configurations... -->
+		<key>NSCameraUsageDescription</key>
+		<string>Your app needs access to the camera to take photos and videos.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Your app needs access to the photo library to select photos and videos.</string>
 	</dict>
 </plist>
