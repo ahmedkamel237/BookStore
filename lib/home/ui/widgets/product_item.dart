@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:stor_app/home/domain/models/product_model.dart';
 import 'package:stor_app/packeges/utils/material.dart';
 
 class ProductItemWidget extends StatefulWidget {
-  final String image;
+  final ProductModel model;
 
-  const ProductItemWidget({super.key, required this.image});
+  const ProductItemWidget({super.key, required this.model});
 
   @override
   State<ProductItemWidget> createState() => _ProductItemWidgetState();
@@ -32,7 +33,7 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                     borderRadius: BorderRadiusDirectional.vertical(top: (Radius.circular(8.r))),
                   ),
                   child: Image.network(
-                    widget.image,
+                    widget.model.image.first,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -93,7 +94,7 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
           padding: EdgeInsets.symmetric(vertical: 8.0.h, horizontal: 4.0.w),
           clipBehavior: Clip.antiAliasWithSaveLayer,
           decoration: BoxDecoration(
-            color: AppColors.brown,
+            color: AppColors.white,
             borderRadius: BorderRadiusDirectional.vertical(bottom: (Radius.circular(8.r))),
           ),
           child: Row(
@@ -101,10 +102,10 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
             children: [
               Expanded(
                 child: Text(
-                  'Dart & Flutter Book',
+                  widget.model.name,
                   style: TextStyles.bold(
                     fontSize: 12.sp,
-                    color: AppColors.primary8,
+                    color: AppColors.brown,
                   ),
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
@@ -112,10 +113,10 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
               ),
               SizedBox(width: 10.w),
               Text(
-                '10\$',
+                '${widget.model.price}\$',
                 style: TextStyles.bold(
                   fontSize: 14.sp,
-                  color: AppColors.primary8,
+                  color: AppColors.brown,
                 ),
               ),
             ],
