@@ -85,16 +85,17 @@ class ProductGridViewWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
-                child: Container(
+                child: SizedBox(
                   width: MediaQuery.of(context).size.width*0.5,
                   height: MediaQuery.of(context).size.height * 0.3,
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.r),
-                  ),
-                  child: Image.network(
-                    model.image.first,
-                    fit: BoxFit.cover,
+                  child: Card(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    elevation: 30,
+                    shadowColor: AppColors.brown,
+                    child: Image.network(
+                      model.image.first,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
@@ -103,9 +104,9 @@ class ProductGridViewWidget extends StatelessWidget {
               ),
               Text(
                 model.name,
-                style: TextStyles.medium(
+                style: TextStyles.extraBold(
                   fontSize: Dimensions.large.sp,
-                  color: AppColors.brown,
+                  color: AppColors.black,
                   height: 1.3,
                 ),
               ),
@@ -116,7 +117,7 @@ class ProductGridViewWidget extends StatelessWidget {
                 model.description,
                 style: TextStyles.medium(
                   fontSize: Dimensions.large.sp,
-                  color: AppColors.brown,
+                  color: AppColors.black,
                 ),
               ),
               const Row(children: []),
