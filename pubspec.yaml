@@ -14,9 +14,13 @@ dependencies:
 
   # firebase
   firebase_core: ^2.13.1
+  firebase_messaging:
   cloud_firestore: ^4.8.0
   firebase_auth: ^4.6.2
   firebase_storage: ^11.2.2
+  permission_handler:
+  flutter_local_notifications:
+  http:
 
   flutter_dotenv: ^5.1.0
   flutter_screenutil: ^5.9.0
@@ -48,6 +52,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - assets/notification_sounds/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
