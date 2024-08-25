@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stor_app/cart/ui/cart_page.dart';
 import 'package:stor_app/home/ui/home_page.dart';
 import 'package:stor_app/packeges/utils/material.dart';
+import 'package:stor_app/setting/setting_page.dart';
 
 class MainHostPage extends StatefulWidget {
   const MainHostPage({super.key});
@@ -16,7 +17,7 @@ class _MainHostPageState extends State<MainHostPage> {
   final tabPages = [
     const CartPage(),
     const HomePage(),
-    const _SettingPage(),
+    const SettingPage(),
   ];
 
 
@@ -69,28 +70,4 @@ class _MainHostPageState extends State<MainHostPage> {
       ),
     );
   }
-}
-
-class _SettingPage extends StatefulWidget {
-  const _SettingPage();
-
-  @override
-  State<_SettingPage> createState() => _SettingPageState();
-}
-
-class _SettingPageState extends State<_SettingPage>
-    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  @override
-  Widget build(BuildContext context) {
-    super.build(context);
-    return Scaffold(
-      appBar: AppBar(title: const Text('Setting')),
-      body: const Center(
-        child: Text('Setting Page'),
-      ),
-    );
-  }
-
-  @override
-  bool get wantKeepAlive => true;
 }

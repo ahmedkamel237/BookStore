@@ -64,13 +64,6 @@ class _HomePageBodyState extends State<_HomePageBody>
               color: AppColors.brown,
             ),
           ),
-          IconButton(
-            onPressed: () async {},
-            icon: const Icon(
-              Icons.logout,
-              color: AppColors.brown,
-            ),
-          ),
         ],
       ),
       body: BlocListener<HomeCubit, HomeState>(
