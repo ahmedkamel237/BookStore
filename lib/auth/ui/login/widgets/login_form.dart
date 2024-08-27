@@ -38,7 +38,7 @@ class _LoginFormState extends State<LoginForm> {
               const SnackBar(content: Text("Login Successfully")),
             );
             Navigator.of(context).pushReplacementNamed(BuilderScreen.routeName);
-          } else if (state is LoginError) {
+          } else if (state is LoginFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.error)),
             );
