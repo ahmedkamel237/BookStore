@@ -49,10 +49,7 @@ class AuthRepositoryImp implements AuthRepository {
         'uId': value.user?.uid,
         'lastName': registerModelInput.lastName,
       }).catchError((error) {
-        throw FirebaseAuthException(
-          code: error.toString(),
-          message: error.toString(),
-        );
+        throw error;
       });
     });
   }
@@ -69,43 +66,34 @@ class AuthRepositoryImp implements AuthRepository {
 
   @override
   Future<UserDataModel> getUserData() async {
-    // final user = _firebaseAuth.currentUser?.email;
-    // print('user: $user');
-    // if (user != null) {
-    return const UserDataModel(
-      email: "ahmed@gmail.com",
-      firstName: 'Ahmed',
-      lastName: 'Mahmoud',
+    final id = _firebaseAuth.currentUser?.uid;
+    final userData =
+        await _firebaseFirestore.collection('users').doc(id).get().catchError(
+              (e) => throw FirebaseAuthException(
+                code: e.toString(),
+                message: e.toString(),
+              ),
+            );
+    return UserDataModel(
+      email: userData['email'] ?? '',
+      firstName: userData['firstName'] ?? 'firstName',
+      lastName: userData['lastName'] ?? 'lastName',
+      id: userData['uId'] ?? 'id',
     );
-    // }else {
-    // throw Exception('user not found');
-    // }
+  }
+  @override
+  Future<void> updateUserData({required UserDataModel userData}) async {
+    final id = _firebaseAuth.currentUser?.uid;
+    await _firebaseFirestore.collection('users').doc(id).update({
+      'firstName': userData.firstName,
+      'lastName': userData.lastName,
+    }).catchError(
+        (error){
+          throw error;
+        },
+    );
   }
 
-//  Future<void> logout() async {
-//     final connectivityResult = await Connectivity().checkConnectivity();
-//
-//     // Check for network connectivity
-//     if (connectivityResult == ConnectivityResult.none) {
-//       // Emit a failure state if no network is found
-//       emit(LogoutFailureState("No network connection"));
-//       return;
-//     }
-//
-//     try {
-//       // Attempt to sign out
-//       await _firebaseAuth.signOut();
-//
-//       // Clear preferences after successful sign out
-//       await _prefs.then((value) => value.clear());
-//
-//       // Emit success state
-//       emit(LogoutSuccessState());
-//     } catch (e) {
-//       // Emit a failure state in case of any error during the sign-out process
-//       emit(LogoutFailureState(e.toString()));
-//     }
-//   }
   @override
   Future<void> logout() async {
     await _firebaseAuth.signOut().catchError(

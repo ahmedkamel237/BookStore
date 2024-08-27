@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stor_app/auth/domain/models/login_input_model.dart';
-import 'package:stor_app/auth/ui/forget_password/forget_password.dart';
+import 'package:stor_app/auth/ui/forget_password/forget_password_page.dart';
 import 'package:stor_app/auth/ui/login/login_cubit.dart';
 import 'package:stor_app/auth/ui/login/login_state.dart';
 import 'package:stor_app/auth/ui/register/register_page.dart';
