@@ -34,34 +34,6 @@ class AuthRepositoryImp implements AuthRepository {
     }
   }
 
-//FirebaseAuth.instance.createUserWithEmailAndPassword(
-// //     email: email,
-// //     password: password,
-// //
-// //   ).then((value)
-// //   {
-// //     userCreate(
-// //       email: email,
-// //       name: name,
-// //       phone: phone,
-// //       uId: value.user!.uid,
-// //     );
-// //     emit(SocialRegisterSuccesState());
-// //   }).catchError((e)
-// //   {
-// //     if (e.code == 'weak-password') {
-// //       AwesomeDialog(
-// //           context: context,
-// //           title: "Error",
-// //           body: Text("Password is to weak"))
-// //         ..show();
-// //     } else if (e.code == 'email-already-in-use') {
-// //       AwesomeDialog(
-// //           context: context,
-// //           title: "Error",
-// //           body: Text("The account already exists for that email"))
-// //         ..show();
-// //     }});
   @override
   Future<void> register(
       {required UserRegisterModelInput registerModelInput}) async {
@@ -84,10 +56,10 @@ class AuthRepositoryImp implements AuthRepository {
       });
     });
   }
+
   @override
   Future<void> resetPassword({required String email}) async {
     await _firebaseAuth.sendPasswordResetEmail(email: email).catchError((e) {
-
       throw FirebaseAuthException(
         code: e.toString(),
         message: e.toString(),
