@@ -9,7 +9,7 @@ import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
-  static const routeName = '/LoginPage';
+  static const routeName = 'LoginPage';
 
   @override
   Widget build(BuildContext context) {
@@ -27,33 +27,35 @@ class _LoginBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: PaddingDimensions.pagePadding,
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Welcome Back to the\nBook Store!',
-                style: TextStyles.extraBold(
-                  color: AppColors.brown,
-                  height: 1.3,
-                  fontSize: Dimensions.xLarge.sp,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: PaddingDimensions.pagePadding,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: PaddingDimensions.xLarge.h),
+                Text(
+                  'Welcome Back to the\nBook Store!',
+                  style: TextStyles.extraBold(
+                    color: AppColors.brown,
+                    height: 1.3,
+                    fontSize: Dimensions.xxLarge.sp,
+                  ),
                 ),
-              ),
-              SizedBox(height: PaddingDimensions.large.h),
-              Text(
-                'Login to your account',
-                style: TextStyles.extraBold(
-                  color: AppColors.darkBrown,
-                  fontSize: Dimensions.medium.sp,
+                SizedBox(height: PaddingDimensions.large.h),
+                Text(
+                  'Login to your account',
+                  style: TextStyles.extraBold(
+                    color: AppColors.darkBrown,
+                    fontSize: Dimensions.xLarge.sp,
+                  ),
                 ),
-              ),
-              const LoginForm(),
-            ],
+                const LoginForm(),
+              ],
+            ),
           ),
         ),
       ),

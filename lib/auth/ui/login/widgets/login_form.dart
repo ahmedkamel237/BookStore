@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stor_app/auth/domain/models/login_input_model.dart';
 import 'package:stor_app/auth/ui/login/login_cubit.dart';
 import 'package:stor_app/auth/ui/login/login_state.dart';
+import 'package:stor_app/auth/ui/register/register_page.dart';
 import 'package:stor_app/builder_screen.dart';
 import 'package:stor_app/common/helpers/helpers/app_regx.dart';
 import 'package:stor_app/packeges/app_materials/material.dart';
@@ -79,7 +80,7 @@ class _LoginFormState extends State<LoginForm> {
               Text(
                 'Forget password?',
                 style: TextStyles.bold(
-                  fontSize: Dimensions.medium.sp,
+                  fontSize: Dimensions.large.sp,
                   color: AppColors.brown,
                 ),
               ),
@@ -107,18 +108,23 @@ class _LoginFormState extends State<LoginForm> {
                       TextSpan(
                         text: "Don't have an account? ",
                         style: TextStyles.bold(
-                          fontSize: Dimensions.medium.sp,
+                          fontSize: Dimensions.large.sp,
                           color: AppColors.brown,
                         ),
                       ),
                       WidgetSpan(
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                              builder: (context) => const RegisterPage(),
+                            ));
+                          },
                           child: RichText(
                             text: TextSpan(
                               text: 'Sign up',
                               style: TextStyles.extraBold(
-                                fontSize: Dimensions.medium.sp,
+                                fontSize: Dimensions.large.sp,
                                 color: AppColors.brown,
                               ),
                             ),

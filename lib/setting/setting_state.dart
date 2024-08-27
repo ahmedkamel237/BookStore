@@ -1,6 +1,11 @@
 import 'package:stor_app/auth/domain/models/user_data_model.dart';
 
-abstract class SettingState {}
+abstract class SettingState {
+  final String? error;
+
+  SettingState([this.error]);
+
+}
 
 class SettingInitialState extends SettingState {}
 
@@ -9,9 +14,8 @@ class LogoutLoadingState extends SettingState {}
 class LogoutSuccessState extends SettingState {}
 
 class LogoutFailureState extends SettingState {
-  final String error;
 
-  LogoutFailureState(this.error);
+  LogoutFailureState(super.error);
 }
 
 class GetUserDataLoadingState extends SettingState {}
@@ -23,7 +27,6 @@ class GetUserDataSuccess extends SettingState {
 }
 
 class GetUserDataFailure extends SettingState {
-  final String error;
 
-  GetUserDataFailure(this.error);
+  GetUserDataFailure(super.error);
 }

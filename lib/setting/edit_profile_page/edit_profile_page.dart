@@ -7,6 +7,7 @@ import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 
 class EditProfile extends StatefulWidget {
   final UserDataModel user;
+
   const EditProfile({super.key, required this.user});
 
   @override
@@ -16,14 +17,17 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
   final _formKey = GlobalKey<FormState>();
   bool _isButtonEnabled = false;
+
   @override
   void initState() {
     _firstNameController.text = widget.user.firstName;
     _lastNameController.text = widget.user.lastName;
     super.initState();
   }
+
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,13 +41,14 @@ class _EditProfileState extends State<EditProfile> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: PaddingDimensions.large),
+        padding:
+            const EdgeInsets.symmetric(horizontal: PaddingDimensions.large),
         child: Form(
           key: _formKey,
           child: Column(
             children: [
               SizedBox(height: PaddingDimensions.xLarge.h),
-               AppTextFormField(
+              AppTextFormField(
                 labelText: "First Name",
                 controller: _firstNameController,
               ),
@@ -55,7 +60,9 @@ class _EditProfileState extends State<EditProfile> {
               SizedBox(height: PaddingDimensions.xLarge.h),
               AppMaterialButton(
                 buttonText: 'Save',
-                onPressed: (){},
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
               ),
             ],
           ),
@@ -63,9 +70,9 @@ class _EditProfileState extends State<EditProfile> {
       ),
     );
   }
-  void _validateButton() {
 
-  }
+
+  void _validateButton() {}
   void _onButtonPressed() {
     if (_formKey.currentState!.validate()) {
       setState(() {

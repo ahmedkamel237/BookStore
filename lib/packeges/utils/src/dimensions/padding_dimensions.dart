@@ -17,8 +17,9 @@ class Dimensions {
   static double small = 6.sp;
   static double normal = 10.sp;
   static double medium = 12.sp;
-  static double large = 16.sp;
-  static double xLarge = 20.sp;
-  static double xxLarge = 24.sp;
-  static double xxxLarge = 28.sp;
+  static double large = 14.sp;
+  static double xLarge = 16.sp;
+  static double xxLarge = 20.sp;
+  static double xxxLarge = 24.sp;
+  static double x4Large = 28.sp;
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stor_app/auth/ui/login/login_page.dart';
+import 'package:stor_app/packeges/app_materials/src/common_widget/failure_widget.dart';
 import 'package:stor_app/packeges/utils/material.dart';
 import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 import 'package:stor_app/setting/edit_profile_page/edit_profile_page.dart';
@@ -34,6 +35,7 @@ class _SettingBodyState extends State<_SettingBody>
     super.build(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
         title: Text(
           'Setting',
           style: TextStyles.extraBold(
@@ -42,122 +44,138 @@ class _SettingBodyState extends State<_SettingBody>
           ),
         ),
       ),
-      body: BlocConsumer<SettingCubit, SettingState>(
-        listener: (context, state) {
-          if (state is LogoutSuccessState) {
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => const LoginPage()),
-              (route) => false,
-            );
-          } else if (state is LogoutFailureState) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.error),
-              ),
-            );
-          }
+      body: RefreshIndicator(
+        color: AppColors.brown,
+        backgroundColor: AppColors.primary7,
+        onRefresh: () async {
+          BlocProvider.of<SettingCubit>(context).getUserData();
         },
-        builder: (context, state) {
-          if (state is LogoutLoadingState) {
-            return const Center(
+        child: BlocConsumer<SettingCubit, SettingState>(
+          listener: (context, state) {
+            if (state is LogoutSuccessState) {
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+                (route) => false,
+              );
+            } else if (state is LogoutFailureState) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.error??''),
+                ),
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is GetUserDataSuccess) {
+              return Padding(
+                padding: const EdgeInsets.all(PaddingDimensions.large),
+                child: SingleChildScrollView(
+                  physics: const ClampingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics(),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      const _CustomSettingHiderWidget(title: "Account"),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.lightBrown,
+                          border: Border.all(
+                            color: AppColors.darkBrown,
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(PaddingDimensions.normal),
+                          child: Column(
+                            children: [
+                              _CustomSettingRow(
+                                title: "Edit Profile",
+                                icon: Icons.person,
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          EditProfile(user: state.userDataModel),
+                                    ),
+                                  );
+                                },
+                              ),
+                              _CustomSettingRow(
+                                title: "Security",
+                                icon: Icons.privacy_tip_rounded,
+                                onTap: () {},
+                              ),
+                              _CustomSettingRow(
+                                title: "Notifications",
+                                icon: Icons.notifications,
+                                onTap: () {},
+                              ),
+                              _CustomSettingRow(
+                                title: "Privacy",
+                                icon: Icons.lock,
+                                onTap: () {},
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: PaddingDimensions.large,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          BlocProvider.of<SettingCubit>(context).logout();
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              Icons.logout,
+                              color: AppColors.brown,
+                              size: 30,
+                            ),
+                            SizedBox(
+                              width: PaddingDimensions.large.w,
+                            ),
+                            Text(
+                              "Logout",
+                              style: TextStyles.semiBold(
+                                color: AppColors.brown,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }
+            if (state is GetUserDataLoadingState||state is LogoutLoadingState) {
+              return const Center(
                 child: CircularProgressIndicator(
-              color: AppColors.brown,
-            ));
-          } else if (state is GetUserDataSuccess) {
-            return Padding(
-              padding: const EdgeInsets.all(PaddingDimensions.large),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const _CustomSettingHiderWidget(title: "Account"),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.lightBrown,
-                      border: Border.all(
-                        color: AppColors.darkBrown,
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(PaddingDimensions.normal),
-                      child: Column(
-                        children: [
-                          _CustomSettingRow(
-                            title: "Edit Profile",
-                            icon: Icons.person,
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      EditProfile(user: state.userDataModel),
-                                ),
-                              );
-                            },
-                          ),
-                          _CustomSettingRow(
-                            title: "Security",
-                            icon: Icons.privacy_tip_rounded,
-                            onTap: () {},
-                          ),
-                          _CustomSettingRow(
-                            title: "Notifications",
-                            icon: Icons.notifications,
-                            onTap: () {},
-                          ),
-                          _CustomSettingRow(
-                            title: "Privacy",
-                            icon: Icons.lock,
-                            onTap: () {},
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const Spacer(),
-                  InkWell(
-                    onTap: () {
-                      BlocProvider.of<SettingCubit>(context).logOut();
-                    },
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(
-                          Icons.logout,
-                          color: AppColors.brown,
-                          size: 30,
-                        ),
-                        SizedBox(
-                          width: PaddingDimensions.large.w,
-                        ),
-                        Text(
-                          "Logout",
-                          style: TextStyles.semiBold(
-                            color: AppColors.brown,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            );
-          } else if (state is GetUserDataLoadingState) {
-            return const Center(
-              child: CircularProgressIndicator(
-                color: AppColors.brown,
-              ),
-            );
-          }else if (state is GetUserDataFailure) {
-            return Center(
-              child: Text(state.error),
-            );
-          }else{
-            return const SizedBox.shrink();
-          }
-        },
+                  color: AppColors.brown,
+                ),
+              );
+            }
+            if (state is GetUserDataFailure || state is LogoutFailureState) {
+              return FailurePage(
+                message: state.error,
+                onPressed:() {
+                  BlocProvider.of<SettingCubit>(context).getUserData();
+                },
+              );
+            }
+            else {
+              return const SizedBox.shrink();
+            }
+          },
+        ),
       ),
     );
   }
