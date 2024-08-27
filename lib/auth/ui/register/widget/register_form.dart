@@ -224,6 +224,10 @@ class _RegisterFormState extends State<RegisterForm> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _formKey.currentState?.dispose();
     super.dispose();
   }
 

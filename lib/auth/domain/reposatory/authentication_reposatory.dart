@@ -9,5 +9,7 @@ abstract class AuthRepository {
 
   Future<UserDataModel> getUserData();
 
+  Future<void> resetPassword({required String email});
+
   Future<void> logout();
 }

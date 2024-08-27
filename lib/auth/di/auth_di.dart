@@ -5,6 +5,7 @@ import 'package:stor_app/auth/domain/usecases/get_user_data_use_case.dart';
 import 'package:stor_app/auth/domain/usecases/login_use_case.dart';
 import 'package:stor_app/auth/domain/usecases/logout_use_case.dart';
 import 'package:stor_app/auth/domain/usecases/register_use_case.dart';
+import 'package:stor_app/auth/domain/usecases/reset_password_use_case.dart';
 import 'package:stor_app/common/base/app_injector.dart';
 
 class AuthDi {
@@ -21,5 +22,6 @@ class AuthDi {
 
     injector.registerFactory(() => LogOutUseCase(injector()));
     injector.registerFactory(() => GetUserDataUseCase(injector()));
+    injector.registerFactory(() => ResetPasswordUseCase(injector()));
   }
 }
