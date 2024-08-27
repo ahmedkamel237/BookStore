@@ -5,16 +5,16 @@ import 'package:stor_app/packeges/app_materials/material.dart';
 import 'package:stor_app/packeges/utils/material.dart';
 import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 
-class EditProfile extends StatefulWidget {
+class EditProfilePage extends StatefulWidget {
   final UserDataModel user;
 
-  const EditProfile({super.key, required this.user});
+  const EditProfilePage({super.key, required this.user});
 
   @override
-  State<EditProfile> createState() => _EditProfileState();
+  State<EditProfilePage> createState() => _EditProfilePageState();
 }
 
-class _EditProfileState extends State<EditProfile> {
+class _EditProfilePageState extends State<EditProfilePage> {
   final _formKey = GlobalKey<FormState>();
   bool _isButtonEnabled = false;
 
@@ -32,6 +32,7 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: AppColors.brown,
         title: Text(
           'Edit Profile',
           style: TextStyles.semiBold(

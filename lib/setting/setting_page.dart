@@ -100,7 +100,7 @@ class _SettingBodyState extends State<_SettingBody>
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          EditProfile(user: state.userDataModel),
+                                          EditProfilePage(user: state.userDataModel),
                                     ),
                                   );
                                 },
