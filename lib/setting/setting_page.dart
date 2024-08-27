@@ -60,7 +60,7 @@ class _SettingBodyState extends State<_SettingBody>
             } else if (state is LogoutFailureState) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(state.error??''),
+                  content: Text(state.error ?? ''),
                 ),
               );
             }
@@ -89,7 +89,8 @@ class _SettingBodyState extends State<_SettingBody>
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(PaddingDimensions.normal),
+                          padding:
+                              const EdgeInsets.all(PaddingDimensions.normal),
                           child: Column(
                             children: [
                               _CustomSettingRow(
@@ -99,8 +100,16 @@ class _SettingBodyState extends State<_SettingBody>
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          EditProfilePage(user: state.userDataModel),
+                                      builder: (context) => EditProfilePage(
+                                        user: state.userDataModel,
+                                        onUserDataUpdated: () {
+                                          setState(() {
+                                            BlocProvider.of<SettingCubit>(
+                                                    context)
+                                                .getUserData();
+                                          });
+                                        },
+                                      ),
                                     ),
                                   );
                                 },
@@ -156,7 +165,8 @@ class _SettingBodyState extends State<_SettingBody>
                 ),
               );
             }
-            if (state is GetUserDataLoadingState||state is LogoutLoadingState) {
+            if (state is GetUserDataLoadingState ||
+                state is LogoutLoadingState) {
               return const Center(
                 child: CircularProgressIndicator(
                   color: AppColors.brown,
@@ -166,12 +176,11 @@ class _SettingBodyState extends State<_SettingBody>
             if (state is GetUserDataFailure || state is LogoutFailureState) {
               return FailurePage(
                 message: state.error,
-                onPressed:() {
+                onPressed: () {
                   BlocProvider.of<SettingCubit>(context).getUserData();
                 },
               );
-            }
-            else {
+            } else {
               return const SizedBox.shrink();
             }
           },

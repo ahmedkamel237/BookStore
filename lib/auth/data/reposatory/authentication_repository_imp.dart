@@ -16,8 +16,7 @@ class AuthRepositoryImp implements AuthRepository {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
   @override
-  Future<void> login(
-      {required LoginInputModel loginInputModel}) async {
+  Future<void> login({required LoginInputModel loginInputModel}) async {
     await _firebaseAuth
         .signInWithEmailAndPassword(
           email: loginInputModel.email,
@@ -50,10 +49,7 @@ class AuthRepositoryImp implements AuthRepository {
         'uId': value.user?.uid,
         'lastName': registerModelInput.lastName,
       }).catchError((error) {
-        throw FirebaseAuthException(
-          code: error.toString(),
-          message: error.toString(),
-        );
+        throw error;
       });
     });
   }
@@ -77,12 +73,24 @@ class AuthRepositoryImp implements AuthRepository {
                 code: e.toString(),
                 message: e.toString(),
               ),
-        );
+            );
     return UserDataModel(
       email: userData['email'] ?? '',
       firstName: userData['firstName'] ?? 'firstName',
       lastName: userData['lastName'] ?? 'lastName',
       id: userData['uId'] ?? 'id',
+    );
+  }
+  @override
+  Future<void> updateUserData({required UserDataModel userData}) async {
+    final id = _firebaseAuth.currentUser?.uid;
+    await _firebaseFirestore.collection('users').doc(id).update({
+      'firstName': userData.firstName,
+      'lastName': userData.lastName,
+    }).catchError(
+        (error){
+          throw error;
+        },
     );
   }
 
