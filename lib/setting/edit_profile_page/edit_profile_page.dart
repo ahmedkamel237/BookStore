@@ -10,12 +10,10 @@ import 'package:stor_app/setting/edit_profile_page/edit_profile_state.dart';
 
 class EditProfilePage extends StatefulWidget {
   final UserDataModel user;
-  final VoidCallback onUserDataUpdated;
 
   const EditProfilePage({
     super.key,
     required this.user,
-    required this.onUserDataUpdated,
   });
 
   @override
@@ -51,13 +49,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
         child: BlocConsumer<EditProfileCubit, EditProfileState>(
           listener: (context, state) {
             if (state is EditProfileSuccess) {
-              widget.onUserDataUpdated;
+              Navigator.of(context).pop(state.userDataModel);
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text("Your data has been updated"),
                 ),
               );
-              Navigator.of(context).pop();
             }
             if (state is EditProfileFailure) {
               ScaffoldMessenger.of(context).showSnackBar(

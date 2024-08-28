@@ -25,8 +25,8 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     } else {
       emit(EditProfileLoading());
       try {
-        await _updateUserDataUseCase.execute(userData: userData);
-        emit(EditProfileSuccess());
+       final result = await _updateUserDataUseCase.execute(userData: userData);
+        emit(EditProfileSuccess(result));
       } on FirebaseException catch (e) {
         emit(EditProfileFailure(e.toString()));
       }

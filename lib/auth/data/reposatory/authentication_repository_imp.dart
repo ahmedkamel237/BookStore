@@ -82,7 +82,7 @@ class AuthRepositoryImp implements AuthRepository {
     );
   }
   @override
-  Future<void> updateUserData({required UserDataModel userData}) async {
+  Future<UserDataModel> updateUserData({required UserDataModel userData}) async {
     final id = _firebaseAuth.currentUser?.uid;
     await _firebaseFirestore.collection('users').doc(id).update({
       'firstName': userData.firstName,
@@ -92,6 +92,8 @@ class AuthRepositoryImp implements AuthRepository {
           throw error;
         },
     );
+
+    return userData;
   }
 
   @override

@@ -6,7 +6,7 @@ class UpdateUserDataUseCase {
 
   final AuthRepository _authRepository;
 
-  Future<void> execute({required UserDataModel userData}) async {
-    await _authRepository.updateUserData(userData: userData);
+  Future<UserDataModel> execute({required UserDataModel userData}) async {
+    return await _authRepository.updateUserData(userData: userData);
   }
 }

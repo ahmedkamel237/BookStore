@@ -97,21 +97,21 @@ class _SettingBodyState extends State<_SettingBody>
                                 title: "Edit Profile",
                                 icon: Icons.person,
                                 onTap: () {
-                                  Navigator.push(
+                                   final data = Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => EditProfilePage(
                                         user: state.userDataModel,
-                                        onUserDataUpdated: () {
-                                          setState(() {
-                                            BlocProvider.of<SettingCubit>(
-                                                    context)
-                                                .getUserData();
-                                          });
-                                        },
                                       ),
                                     ),
                                   );
+
+                                  if (data != null) {
+                                    setState(() {
+                                      BlocProvider.of<SettingCubit>(context)
+                                          .getUserData();
+                                    });
+                                  }
                                 },
                               ),
                               _CustomSettingRow(
