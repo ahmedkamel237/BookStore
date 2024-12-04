@@ -13,11 +13,11 @@ dependencies:
     sdk: flutter
 
   # firebase
-  firebase_core: ^2.13.1
-  firebase_messaging:
-  cloud_firestore: ^4.8.0
-  firebase_auth: ^4.6.2
-  firebase_storage: ^11.2.2
+  firebase_core: ^3.8.0
+  firebase_messaging: ^15.1.5
+  cloud_firestore:
+  firebase_auth: ^5.3.3
+  firebase_storage: ^12.3.6
   permission_handler:
   flutter_local_notifications:
   http:
@@ -26,7 +26,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
   cupertino_icons: ^1.0.2
   equatable: ^2.0.5
-  get_it: ^7.6.7
+  get_it: ^8.0.2
   #  connectivity_plus: ^6.0.2
 
   shared_preferences: ^2.2.3
@@ -42,9 +42,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.13.1
-  flutter_lints: ^2.0.0
-  very_good_analysis: ^5.1.0
+  flutter_launcher_icons: ^0.14.1
+  flutter_lints: ^5.0.0
+  very_good_analysis: ^6.0.0
 
 
 flutter:

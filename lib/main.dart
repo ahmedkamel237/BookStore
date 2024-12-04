@@ -12,10 +12,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await Future.wait([
-    PushNotificationServices.init(),
-    LocalNotificationService.init(),
-  ]);
+  // await Future.wait([
+  //   PushNotificationServices.init(),
+  //   LocalNotificationService.init(),
+  // ]);
   await setUpGetIt();
   await CacheHelper.init();
   runApp(const MyApp());
