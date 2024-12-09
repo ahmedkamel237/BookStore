@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stor_app/auth/domain/usecases/reset_password_use_case.dart';
-import 'package:stor_app/auth/ui/forget_password/forget_password_state.dart';
-import 'package:stor_app/common/base/app_injector.dart';
-import 'package:stor_app/common/utils/network_info.dart';
+import 'package:store_app/auth/domain/usecases/reset_password_use_case.dart';
+import 'package:store_app/auth/ui/forget_password/forget_password_state.dart';
+import 'package:store_app/common/base/app_injector.dart';
+import 'package:store_app/common/utils/network_info.dart';
 
 class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   late final ResetPasswordUseCase _resetPasswordUseCase;

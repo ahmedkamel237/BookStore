@@ -1,4 +1,4 @@
-import 'package:stor_app/auth/domain/reposatory/authentication_reposatory.dart';
+import 'package:store_app/auth/domain/reposatory/authentication_reposatory.dart';
 
 class ResetPasswordUseCase {
   final AuthRepository _authRepository;

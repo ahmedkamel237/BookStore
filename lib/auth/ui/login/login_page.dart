@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:stor_app/auth/ui/login/login_cubit.dart';
-import 'package:stor_app/auth/ui/login/widgets/login_form.dart';
-import 'package:stor_app/packeges/utils/material.dart';
-import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
+import 'package:store_app/auth/ui/login/login_cubit.dart';
+import 'package:store_app/auth/ui/login/widgets/login_form.dart';
+import 'package:store_app/packeges/utils/material.dart';
+import 'package:store_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 
 
 class LoginPage extends StatelessWidget {

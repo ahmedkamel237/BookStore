@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:stor_app/auth/ui/login/login_page.dart';
-import 'package:stor_app/common/helpers/shared_preferances_helper/shared_preferances_helper.dart';
-import 'package:stor_app/host_page.dart';
+import 'package:store_app/auth/ui/login/login_page.dart';
+import 'package:store_app/common/helpers/shared_preferances_helper/shared_preferances_helper.dart';
+import 'package:store_app/host_page.dart';
 
 class BuilderScreen extends StatelessWidget {
   const BuilderScreen({super.key});

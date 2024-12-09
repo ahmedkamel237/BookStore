@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:stor_app/auth/ui/login/login_page.dart';
-import 'package:stor_app/packeges/app_materials/src/common_widget/failure_widget.dart';
-import 'package:stor_app/packeges/utils/material.dart';
-import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
-import 'package:stor_app/setting/edit_profile_page/edit_profile_page.dart';
-import 'package:stor_app/setting/setting_cubit.dart';
-import 'package:stor_app/setting/setting_state.dart';
+import 'package:store_app/auth/ui/login/login_page.dart';
+import 'package:store_app/packeges/app_materials/src/common_widget/failure_widget.dart';
+import 'package:store_app/packeges/utils/material.dart';
+import 'package:store_app/packeges/utils/src/dimensions/padding_dimensions.dart';
+import 'package:store_app/setting/edit_profile_page/edit_profile_page.dart';
+import 'package:store_app/setting/setting_cubit.dart';
+import 'package:store_app/setting/setting_state.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});

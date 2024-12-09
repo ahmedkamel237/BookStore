@@ -1,4 +1,4 @@
-import 'package:stor_app/auth/domain/models/user_data_model.dart';
+import 'package:store_app/auth/domain/models/user_data_model.dart';
 
 abstract class SettingState {
   final String? error;

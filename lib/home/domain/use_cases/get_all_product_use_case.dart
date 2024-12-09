@@ -1,5 +1,5 @@
-import 'package:stor_app/home/domain/models/product_model.dart';
-import 'package:stor_app/home/domain/repository/home_repository.dart';
+import 'package:store_app/home/domain/models/product_model.dart';
+import 'package:store_app/home/domain/repository/home_repository.dart';
 
 class GetAllProductUseCase {
   final HomeRepository homeRepository;

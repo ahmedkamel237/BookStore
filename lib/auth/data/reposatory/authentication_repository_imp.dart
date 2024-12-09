@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stor_app/auth/domain/models/login_input_model.dart';
-import 'package:stor_app/auth/domain/models/register_model_input.dart';
-import 'package:stor_app/auth/domain/models/user_data_model.dart';
-import 'package:stor_app/auth/domain/reposatory/authentication_reposatory.dart';
+import 'package:store_app/auth/domain/models/login_input_model.dart';
+import 'package:store_app/auth/domain/models/register_model_input.dart';
+import 'package:store_app/auth/domain/models/user_data_model.dart';
+import 'package:store_app/auth/domain/reposatory/authentication_reposatory.dart';
 
 class AuthRepositoryImp implements AuthRepository {
   AuthRepositoryImp(this._firebaseAuth);

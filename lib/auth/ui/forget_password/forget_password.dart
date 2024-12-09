@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:stor_app/auth/ui/forget_password/forget_password_cubit.dart';
-import 'package:stor_app/auth/ui/forget_password/forget_password_state.dart';
-import 'package:stor_app/common/helpers/helpers/app_regx.dart';
-import 'package:stor_app/packeges/app_materials/material.dart';
-import 'package:stor_app/packeges/utils/material.dart';
-import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
+import 'package:store_app/auth/ui/forget_password/forget_password_cubit.dart';
+import 'package:store_app/auth/ui/forget_password/forget_password_state.dart';
+import 'package:store_app/common/helpers/helpers/app_regx.dart';
+import 'package:store_app/packeges/app_materials/material.dart';
+import 'package:store_app/packeges/utils/material.dart';
+import 'package:store_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 
 class ForgetPasswordPage extends StatefulWidget {
   const ForgetPasswordPage({super.key});

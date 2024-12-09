@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:stor_app/packeges/utils/material.dart';
-import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
+import 'package:store_app/packeges/utils/material.dart';
+import 'package:store_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});

@@ -1,9 +1,7 @@
 import 'dart:developer';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:stor_app/services/local_notifications_services.dart';
-
+import 'package:store_app/services/local_notifications_services.dart';
 class PushNotificationServices {
   PushNotificationServices._();
 

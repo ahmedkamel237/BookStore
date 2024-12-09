@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:stor_app/admin/ui/admin_cubit.dart';
-import 'package:stor_app/admin/ui/admin_state.dart';
-import 'package:stor_app/home/domain/models/categoriey_model_input.dart';
-import 'package:stor_app/packeges/app_materials/material.dart';
-import 'package:stor_app/packeges/utils/material.dart';
-import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
+import 'package:store_app/admin/ui/admin_cubit.dart';
+import 'package:store_app/admin/ui/admin_state.dart';
+import 'package:store_app/home/domain/models/categoriey_model_input.dart';
+import 'package:store_app/packeges/app_materials/material.dart';
+import 'package:store_app/packeges/utils/material.dart';
+import 'package:store_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 
 class AdminAddedPage extends StatelessWidget {
   const AdminAddedPage({super.key});

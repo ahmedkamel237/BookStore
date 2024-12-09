@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:stor_app/auth/domain/models/user_data_model.dart';
-import 'package:stor_app/packeges/app_materials/material.dart';
-import 'package:stor_app/packeges/utils/material.dart';
-import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
+import 'package:store_app/auth/domain/models/user_data_model.dart';
+import 'package:store_app/packeges/app_materials/material.dart';
+import 'package:store_app/packeges/utils/material.dart';
+import 'package:store_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 
 class EditProfile extends StatefulWidget {
   final UserDataModel user;

@@ -1,8 +1,8 @@
 import 'package:get_it/get_it.dart';
-import 'package:stor_app/admin/di/admin_di.dart';
-import 'package:stor_app/auth/di/auth_di.dart';
-import 'package:stor_app/di/common_di.dart';
-import 'package:stor_app/home/di/home_di.dart';
+import 'package:store_app/admin/di/admin_di.dart';
+import 'package:store_app/auth/di/auth_di.dart';
+import 'package:store_app/di/common_di.dart';
+import 'package:store_app/home/di/home_di.dart';
 
 GetIt injector = GetIt.instance;
 

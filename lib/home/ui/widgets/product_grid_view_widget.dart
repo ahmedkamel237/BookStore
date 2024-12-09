@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:stor_app/home/domain/models/product_model.dart';
-import 'package:stor_app/home/ui/home_cubit.dart';
-import 'package:stor_app/home/ui/home_state.dart';
-import 'package:stor_app/home/ui/widgets/product_item.dart';
-import 'package:stor_app/packeges/app_materials/material.dart';
-import 'package:stor_app/packeges/utils/material.dart';
-import 'package:stor_app/packeges/utils/src/dimensions/padding_dimensions.dart';
+import 'package:store_app/home/domain/models/product_model.dart';
+import 'package:store_app/home/ui/home_cubit.dart';
+import 'package:store_app/home/ui/home_state.dart';
+import 'package:store_app/home/ui/widgets/product_item.dart';
+import 'package:store_app/packeges/app_materials/material.dart';
+import 'package:store_app/packeges/utils/material.dart';
+import 'package:store_app/packeges/utils/src/dimensions/padding_dimensions.dart';
 
 class ProductGridViewWidget extends StatelessWidget {
   const ProductGridViewWidget({super.key});

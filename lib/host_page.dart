@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:stor_app/cart/ui/cart_page.dart';
-import 'package:stor_app/home/ui/home_page.dart';
-import 'package:stor_app/packeges/utils/material.dart';
-import 'package:stor_app/setting/setting_page.dart';
+import 'package:store_app/cart/ui/cart_page.dart';
+import 'package:store_app/home/ui/home_page.dart';
+import 'package:store_app/packeges/utils/material.dart';
+import 'package:store_app/setting/setting_page.dart';
 
 class MainHostPage extends StatefulWidget {
   const MainHostPage({super.key});

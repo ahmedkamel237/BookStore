@@ -1,5 +1,5 @@
 
-import 'package:stor_app/home/domain/models/categoriey_model_input.dart';
+import 'package:store_app/home/domain/models/categoriey_model_input.dart';
 
 abstract class AdminRepository {
   Future<void> addCollection(CategoriesModelInput input);

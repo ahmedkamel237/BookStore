@@ -1,4 +1,4 @@
-import 'package:stor_app/home/domain/models/categories_model.dart';
+import 'package:store_app/home/domain/models/categories_model.dart';
 abstract class AdminState {
   final List<CategoriesModel>? categoryModelList;
 

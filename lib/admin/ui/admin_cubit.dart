@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:stor_app/admin/domain/usecases/add_categories_use_case.dart';
-import 'package:stor_app/admin/domain/usecases/remove_collection.dart';
-import 'package:stor_app/admin/ui/admin_state.dart';
-import 'package:stor_app/common/base/app_injector.dart';
-import 'package:stor_app/home/domain/models/categoriey_model_input.dart';
-import 'package:stor_app/home/domain/use_cases/get_all_categores_use_case.dart';
+import 'package:store_app/admin/domain/usecases/add_categories_use_case.dart';
+import 'package:store_app/admin/domain/usecases/remove_collection.dart';
+import 'package:store_app/admin/ui/admin_state.dart';
+import 'package:store_app/common/base/app_injector.dart';
+import 'package:store_app/home/domain/models/categoriey_model_input.dart';
+import 'package:store_app/home/domain/use_cases/get_all_categores_use_case.dart';
 
 class AdminCubit extends Cubit<AdminState> {
   AdminCubit() : super(AdminAddCategoryInitial()) {

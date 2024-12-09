@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stor_app/auth/domain/usecases/get_user_data_use_case.dart';
-import 'package:stor_app/auth/domain/usecases/logout_use_case.dart';
-import 'package:stor_app/common/base/app_injector.dart';
-import 'package:stor_app/common/utils/network_info.dart';
-import 'package:stor_app/setting/setting_state.dart';
+import 'package:store_app/auth/domain/usecases/get_user_data_use_case.dart';
+import 'package:store_app/auth/domain/usecases/logout_use_case.dart';
+import 'package:store_app/common/base/app_injector.dart';
+import 'package:store_app/common/utils/network_info.dart';
+import 'package:store_app/setting/setting_state.dart';
 
 class SettingCubit extends Cubit<SettingState> {
   late final LogOutUseCase _logOutUseCase;

@@ -1,5 +1,5 @@
-import 'package:stor_app/auth/domain/models/register_model_input.dart';
-import 'package:stor_app/auth/domain/reposatory/authentication_reposatory.dart';
+import 'package:store_app/auth/domain/models/register_model_input.dart';
+import 'package:store_app/auth/domain/reposatory/authentication_reposatory.dart';
 
 class RegisterUseCase {
   RegisterUseCase(this._authRepository);

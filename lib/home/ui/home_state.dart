@@ -1,5 +1,5 @@
-import 'package:stor_app/home/domain/models/categories_model.dart';
-import 'package:stor_app/home/domain/models/product_model.dart';
+import 'package:store_app/home/domain/models/categories_model.dart';
+import 'package:store_app/home/domain/models/product_model.dart';
 
 class HomeState {
   final ProductsState productsState;

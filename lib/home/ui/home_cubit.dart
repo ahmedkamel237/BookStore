@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:stor_app/common/base/app_injector.dart';
-import 'package:stor_app/home/domain/use_cases/get_all_categores_use_case.dart';
-import 'package:stor_app/home/domain/use_cases/get_all_product_use_case.dart';
-import 'package:stor_app/home/ui/home_state.dart';
+import 'package:store_app/common/base/app_injector.dart';
+import 'package:store_app/home/domain/use_cases/get_all_categores_use_case.dart';
+import 'package:store_app/home/domain/use_cases/get_all_product_use_case.dart';
+import 'package:store_app/home/ui/home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeState.initial()) {

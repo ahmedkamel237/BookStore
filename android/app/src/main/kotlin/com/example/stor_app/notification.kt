@@ -1,4 +1,4 @@
-package com.example.stor_app
+package com.example.store_app
 
 import android.app.Notification
 import android.app.NotificationChannel
