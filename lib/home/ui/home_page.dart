@@ -68,11 +68,11 @@ class _HomePageBodyState extends State<_HomePageBody>
       ),
       body: BlocListener<HomeCubit, HomeState>(
         listenWhen: (previous, current) =>
-            previous.categoriesState != current.categoriesState,
+            previous.getAllCategory != current.getAllCategory,
         listener: (context, state) {
-          if (state.categoriesState is CategoriesSuccess) {
+          if (state.getAllCategory?.isSuccess==true) {
             initialCategoryId =
-                state.categoriesState.categoryModelList?.first.id;
+                state.getAllCategory?.data?.first.id;
             context.read<HomeCubit>().getAllProducts(initialCategoryId ?? '');
           }
         },

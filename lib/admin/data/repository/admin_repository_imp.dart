@@ -14,6 +14,7 @@ class AdminRepositoryImpl implements AdminRepository {
     await _categories
         .add({
           'name': input.name,
+          'image': input.image,
         })
         .then((value) => _categories.doc(value.id).update({
               'id': value.id,

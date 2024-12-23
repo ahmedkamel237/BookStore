@@ -10,3 +10,4 @@ class GetAllCategoriesUseCase {
     return date;
   }
 }
+//lib/home/domain/use_cases/get_all_categores_use_case.dart

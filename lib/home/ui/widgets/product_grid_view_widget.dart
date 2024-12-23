@@ -16,7 +16,7 @@ class ProductGridViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        if (state.productsState is ProductsSuccess) {
+        if (state.getAllProduct?.isSuccess == true) {
           return SliverPadding(
             padding: const EdgeInsets.symmetric(
                 horizontal: PaddingDimensions.pagePadding),
@@ -31,26 +31,26 @@ class ProductGridViewWidget extends StatelessWidget {
               itemBuilder: (context, index) => GestureDetector(
                 onTap: () {
                   showProductBottomSheet(
-                    state.productsState.productModelList?[index] ??
+                    state.getAllProduct?.data?[index] ??
                         const ProductModel.initial(),
                     context,
                   );
                 },
                 child: ProductItemWidget(
                   model:
-                  state.productsState.productModelList?[index] ??
+                  state.getAllProduct?.data?[index] ??
                       const ProductModel.initial(),
                 ),
               ),
               itemCount:
-              state.productsState.productModelList?.length ?? 0,
+              state.getAllProduct?.data?.length ?? 0,
             ),
           );
-        } else if (state.productsState is ProductsError) {
+        } else if (state.getAllProduct?.isFailure == true) {
           return SliverToBoxAdapter(
-            child: Text(state.productsState.errorMessage ?? ''),
+            child: Text(state.getAllProduct?.failure?.message ?? ''),
           );
-        } else if (state.productsState is ProductsLoading) {
+        } else if (state.getAllProduct?.isLoading==true) {
           return SliverToBoxAdapter(
             child: Center(
               child: Padding(

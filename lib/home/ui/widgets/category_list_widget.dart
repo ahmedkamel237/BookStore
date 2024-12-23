@@ -16,7 +16,7 @@ class CategoryListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return  BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        if (state.categoriesState is CategoriesSuccess) {
+        if (state.getAllCategory?.isSuccess==true) {
           return SliverPersistentHeader(
             pinned: true,
             floating: true,
@@ -36,14 +36,14 @@ class CategoryListWidget extends StatelessWidget {
                   itemBuilder: (context, index) => GestureDetector(
                     onTap: () {
                       context.read<HomeCubit>().getAllProducts(state
-                          .categoriesState
-                          .categoryModelList?[index]
+                          .getAllCategory
+                          ?.data?[index]
                           .id ??
                           '');
                     },
                     child: CategoriesItem(
-                      model: state.categoriesState
-                          .categoryModelList?[index] ??
+                      model: state.getAllCategory
+                          ?.data?[index] ??
                           const CategoriesModel.initial(),
                     ),
                   ),
@@ -51,18 +51,19 @@ class CategoryListWidget extends StatelessWidget {
                   const SizedBox(
                     width: PaddingDimensions.normal,
                   ),
-                  itemCount: state.categoriesState.categoryModelList
+                  itemCount: state.getAllCategory?.data
                       ?.length ??
                       0,
                 ),
               ),
             ),
           );
-        } else if (state.categoriesState is CategoriesError) {
+        } else if (state.getAllCategory?.isSuccess==true) {
           return SliverToBoxAdapter(
-            child: Text(state.categoriesState.errorMessage ?? ''),
+            child: Text(state.getAllCategory?.failure?.message ?? ''),
           );
-        } else if (state.categoriesState is CategoriesLoading) {
+        }
+        else if (state.getAllCategory?.isLoading ==true) {
           return SliverToBoxAdapter(
             child: Center(
               child: Padding(
