@@ -1,67 +1,40 @@
+import 'package:equatable/equatable.dart';
+import 'package:store_app/common/base/async.dart';
 import 'package:store_app/home/domain/models/categories_model.dart';
 import 'package:store_app/home/domain/models/product_model.dart';
 
-class HomeState {
-  final ProductsState productsState;
-  final CategoriesState categoriesState;
+class HomeState extends Equatable {
+  final Async<List<CategoriesModel>>? getAllCategory;
+  final Async<List<ProductModel>>? getAllProduct;
+  final String? errorMessage;
 
-  HomeState(this.productsState, this.categoriesState);
+ const HomeState(
+    this.getAllCategory,
+    this.getAllProduct,
+    this.errorMessage,
+  );
 
   HomeState copyWith({
-    ProductsState? productsState,
-    CategoriesState? categoriesState,
+    Async<List<CategoriesModel>>? getAllCategory,
+    Async<List<ProductModel>>? getAllProduct,
     String? errorMessage,
   }) {
     return HomeState(
-      productsState ?? this.productsState,
-      categoriesState ?? this.categoriesState,
+      getAllCategory ?? this.getAllCategory,
+      getAllProduct ?? this.getAllProduct,
+      errorMessage ?? this.errorMessage,
     );
   }
 
   HomeState.initial()
       : this(
-          ProductsInitial(),
-          CategoriesInitial(),
+          Async.initial(),
+          Async.initial(),
+          null,
         );
+
+  @override
+  List<Object?> get props =>
+      [getAllCategory, getAllProduct, errorMessage];
 }
 
-abstract class CategoriesState {
-  final List<CategoriesModel>? categoryModelList;
-  final String? errorMessage;
-
-  CategoriesState({
-    this.categoryModelList,
-    this.errorMessage,
-  });
-}
-
-class CategoriesInitial extends CategoriesState {}
-
-class CategoriesLoading extends CategoriesState {}
-
-class CategoriesSuccess extends CategoriesState {
-  CategoriesSuccess({required super.categoryModelList});
-}
-
-class CategoriesError extends CategoriesState {
-  CategoriesError({required super.errorMessage});
-}
-
-abstract class ProductsState {
-  final List<ProductModel>? productModelList;
-  final String? errorMessage;
-
-  ProductsState({this.productModelList, this.errorMessage});
-}
-
-class ProductsInitial extends ProductsState {}
-
-class ProductsLoading extends ProductsState {}
-
-class ProductsSuccess extends ProductsState {
-  ProductsSuccess({required super.productModelList});
-}
-
-class ProductsError extends ProductsState {
-  ProductsError({required super.errorMessage});
-}

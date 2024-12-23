@@ -2,7 +2,7 @@ import 'package:store_app/home/data/model/api_product_model.dart';
 import 'package:store_app/home/domain/models/product_model.dart';
 
 extension ConvertCategoriesModelToDocumentSnapshot on ApiProductModel {
-  ProductModel toApiProductModel() {
+  ProductModel mapTo() {
     return ProductModel(
       name: name ??'',
       id: id??'',

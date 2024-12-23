@@ -11,6 +11,7 @@ class CategoriesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(model.image);
     return SizedBox(
       width: MediaQuery.sizeOf(context).height * 0.1 - PaddingDimensions.normal,
       child: Column(
@@ -28,7 +29,7 @@ class CategoriesItem extends StatelessWidget {
             width: MediaQuery.sizeOf(context).height * 0.1 -
                 PaddingDimensions.normal,
             child: Image.asset(
-              'assets/store_app_background.jpeg',
+              model.image,
               fit: BoxFit.cover,
             ),
           ),

@@ -9,8 +9,9 @@ import 'package:store_app/home/domain/models/product_model.dart';
 import 'package:store_app/home/domain/repository/home_repository.dart';
 
 class HomeRepositoryImp implements HomeRepository {
-  final CollectionReference<Map<String, dynamic>> _categories =
-      FirebaseFirestore.instance.collection(AppConstants.collectionName);
+  final CollectionReference<Map<String, dynamic>> _categories;
+
+  HomeRepositoryImp(this._categories);
 
   @override
   Future<List<CategoriesModel>> getAllCategories() async {
@@ -31,7 +32,7 @@ class HomeRepositoryImp implements HomeRepository {
         .get()
         .catchError((e) => throw Exception(e));
     return result.docs
-        .map((e) => ApiProductModel.fromJson(e.data()).toApiProductModel())
+        .map((e) => ApiProductModel.fromJson(e.data()).mapTo())
         .toList();
   }
 }
