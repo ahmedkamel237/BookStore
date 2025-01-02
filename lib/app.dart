@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:store_app/builder_screen.dart';
 import 'package:store_app/core/utils/theme/cubit/theme_cubit.dart';
 import 'package:store_app/core/utils/theme/utils/theme_mapper.dart';
-import 'package:store_app/packeges/utils/material.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
