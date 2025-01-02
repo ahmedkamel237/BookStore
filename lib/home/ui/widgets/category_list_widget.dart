@@ -21,11 +21,11 @@ class CategoryListWidget extends StatelessWidget {
             pinned: true,
             floating: true,
             delegate: _SliverAppBarDelegate(
-              minHeight: MediaQuery.sizeOf(context).height * 0.17.h,
-              maxHeight: MediaQuery.sizeOf(context).height * 0.17.h,
+              minHeight: MediaQuery.sizeOf(context).height * 0.14.h,
+              maxHeight: MediaQuery.sizeOf(context).height * 0.14.h,
               child: Container(
                 color: AppColors.primary8,
-                height: MediaQuery.sizeOf(context).height * 0.17.h,
+                // height: MediaQuery.sizeOf(context).height * 0.17.h,
                 child: ListView.separated(
                   physics: const ClampingScrollPhysics(),
                   padding: const EdgeInsetsDirectional.symmetric(
@@ -58,7 +58,7 @@ class CategoryListWidget extends StatelessWidget {
               ),
             ),
           );
-        } else if (state.getAllCategory?.isSuccess==true) {
+        } else if (state.getAllCategory?.isFailure==true) {
           return SliverToBoxAdapter(
             child: Text(state.getAllCategory?.failure?.message ?? ''),
           );

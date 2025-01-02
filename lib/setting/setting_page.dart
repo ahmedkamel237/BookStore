@@ -67,6 +67,7 @@ class _SettingBodyState extends State<_SettingBody>
           },
           builder: (context, state) {
             if (state is GetUserDataSuccess) {
+              print('state.userDataModel: ${state.userDataModel}');
               return Padding(
                 padding: const EdgeInsets.all(PaddingDimensions.large),
                 child: SingleChildScrollView(

@@ -6,7 +6,7 @@ extension ConvertDocumentSnapshotToCategoriesModel on ApiCategoryModel {
     return CategoriesModel(
       name: name ?? '',
       id: id ?? '',
-      image: image ?? "assets/store_app_background.jpeg",
+      image: image ?? "",
     );
   }
 }

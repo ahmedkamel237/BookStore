@@ -69,13 +69,13 @@ class AuthRepositoryImp implements AuthRepository {
 
   @override
   Future<UserDataModel> getUserData() async {
-    // final user = _firebaseAuth.currentUser?.email;
-    // print('user: $user');
+    final user = _prefs.then((value) => value.getString('user'));
+    print('user: $user');
     // if (user != null) {
     return const UserDataModel(
-      email: "ahmed@gmail.com",
-      firstName: 'Ahmed',
-      lastName: 'Mahmoud',
+      email: '',
+      firstName: '',
+      lastName: '',
     );
     // }else {
     // throw Exception('user not found');

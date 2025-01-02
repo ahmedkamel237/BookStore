@@ -11,10 +11,10 @@ class CategoriesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(model.image);
     return SizedBox(
       width: MediaQuery.sizeOf(context).height * 0.1 - PaddingDimensions.normal,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             height: MediaQuery.sizeOf(context).height * 0.1 -

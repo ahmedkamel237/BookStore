@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:store_app/admin/ui/admin_page.dart';
+import 'package:store_app/common/base/app_injector.dart';
 import 'package:store_app/home/ui/home_cubit.dart';
 import 'package:store_app/home/ui/home_state.dart';
 import 'package:store_app/home/ui/widgets/category_list_widget.dart';
@@ -15,7 +16,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit(),
+      create: (context) => HomeCubit( injector(), injector(),),
       child: const _HomePageBody(),
     );
   }
