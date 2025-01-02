@@ -6,8 +6,11 @@ import 'package:store_app/home/domain/use_cases/get_all_product_use_case.dart';
 import 'package:store_app/home/ui/home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeState.initial()) {
-    _loadUseCases();
+  HomeCubit(this._getAllCategoriesUseCase,this._getAllProductUseCase,)
+      : super(
+    HomeState.initial(),
+  ) {
+    // _loadUseCases();
   }
 
   late final GetAllCategoriesUseCase _getAllCategoriesUseCase;
