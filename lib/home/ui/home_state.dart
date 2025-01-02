@@ -8,11 +8,11 @@ class HomeState extends Equatable {
   final Async<List<ProductModel>>? getAllProduct;
   final String? errorMessage;
 
- const HomeState(
+  const HomeState({
     this.getAllCategory,
     this.getAllProduct,
     this.errorMessage,
-  );
+  });
 
   HomeState copyWith({
     Async<List<CategoriesModel>>? getAllCategory,
@@ -20,21 +20,19 @@ class HomeState extends Equatable {
     String? errorMessage,
   }) {
     return HomeState(
-      getAllCategory ?? this.getAllCategory,
-      getAllProduct ?? this.getAllProduct,
-      errorMessage ?? this.errorMessage,
+      getAllCategory: getAllCategory ?? this.getAllCategory,
+      getAllProduct: getAllProduct ?? this.getAllProduct,
+      errorMessage: errorMessage ?? this.errorMessage,
     );
   }
 
   HomeState.initial()
       : this(
-          Async.initial(),
-          Async.initial(),
-          null,
+          getAllCategory: Async.initial(),
+          getAllProduct: Async.initial(),
+          errorMessage: null,
         );
 
   @override
-  List<Object?> get props =>
-      [getAllCategory, getAllProduct, errorMessage];
+  List<Object?> get props => [getAllCategory, getAllProduct, errorMessage];
 }
-
